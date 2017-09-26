@@ -14,11 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
  * @param key key
  * @return 存储的值
  */
-+ (nullable id)objectWithKey:(NSString *)key;
++ (nullable id)wr_objectWithKey:(NSString *)key;
 /** 存储
  * @param object 存储对象
  * @param key key
  */
-+ (void)saveObject:(nullable id)object forKey:(NSString *)key;
++ (void)wr_saveObject:(nullable id)object forKey:(NSString *)key;
 NS_ASSUME_NONNULL_END
 @end

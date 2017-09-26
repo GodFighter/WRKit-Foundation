@@ -10,13 +10,13 @@
 
 @implementation NSObject (WRUserDefaults)
 
-+ (nullable id)objectWithKey:(NSString *)key {
++ (nullable id)wr_objectWithKey:(NSString *)key {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:key] != nil) {
         return [[NSUserDefaults standardUserDefaults] objectForKey:key];
     }
     return nil;
 }
-+ (void)saveObject:(nullable id)object forKey:(NSString *)key {
++ (void)wr_saveObject:(nullable id)object forKey:(NSString *)key {
     if (object != nil) {
         [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
     } else {
