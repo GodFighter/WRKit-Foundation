@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB32DA331F467DF000D1A469 /* NSString+WRJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32DA321F467DF000D1A469 /* NSString+WRJudge.m */; };
-		BB32DA361F4680FF00D1A469 /* NSDate+WRCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32DA351F4680FF00D1A469 /* NSDate+WRCalendar.m */; };
-		BB8D227F1F45D2BE00B83CD9 /* UIImage+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8D227E1F45D2BE00B83CD9 /* UIImage+WRConvenience.m */; };
-		BB8D22821F45D87B00B83CD9 /* UILabel+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8D22811F45D87B00B83CD9 /* UILabel+WRConvenience.m */; };
-		BB8D22851F45DAA900B83CD9 /* UITextField+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8D22841F45DAA900B83CD9 /* UITextField+WRConvenience.m */; };
-		BB8D22881F45E70000B83CD9 /* UIButton+WRExpand.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8D22871F45E70000B83CD9 /* UIButton+WRExpand.m */; };
-		BB8D228B1F45EB6E00B83CD9 /* UITextField+WRContentChanged.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8D228A1F45EB6E00B83CD9 /* UITextField+WRContentChanged.m */; };
+		BB0EF4911F7A03BB00CE3846 /* UIButton+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4791F7A03BA00CE3846 /* UIButton+WRConvenience.m */; };
+		BB0EF4921F7A03BB00CE3846 /* UIButton+WRExpand.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF47B1F7A03BA00CE3846 /* UIButton+WRExpand.m */; };
+		BB0EF4931F7A03BB00CE3846 /* UIControl+WRBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF47D1F7A03BA00CE3846 /* UIControl+WRBlocks.m */; };
+		BB0EF4941F7A03BB00CE3846 /* UIImage+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF47F1F7A03BA00CE3846 /* UIImage+WRConvenience.m */; };
+		BB0EF4951F7A03BB00CE3846 /* UILabel+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4811F7A03BA00CE3846 /* UILabel+WRConvenience.m */; };
+		BB0EF4961F7A03BB00CE3846 /* UILabel+WRSize.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4831F7A03BA00CE3846 /* UILabel+WRSize.m */; };
+		BB0EF4971F7A03BB00CE3846 /* UITextField+WRContentChanged.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4851F7A03BA00CE3846 /* UITextField+WRContentChanged.m */; };
+		BB0EF4981F7A03BB00CE3846 /* UITextField+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4871F7A03BA00CE3846 /* UITextField+WRConvenience.m */; };
+		BB0EF4991F7A03BB00CE3846 /* NSDate+WRCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF48B1F7A03BA00CE3846 /* NSDate+WRCalendar.m */; };
+		BB0EF49A1F7A03BB00CE3846 /* NSObject+WRJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF48D1F7A03BA00CE3846 /* NSObject+WRJudge.m */; };
+		BB0EF49B1F7A03BB00CE3846 /* NSString+WRJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF48F1F7A03BA00CE3846 /* NSString+WRJudge.m */; };
+		BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */; };
 		BB9BE9861F453D7D009FA8AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9851F453D7D009FA8AC /* main.m */; };
 		BB9BE9891F453D7D009FA8AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9881F453D7D009FA8AC /* AppDelegate.m */; };
 		BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE98B1F453D7D009FA8AC /* ViewController.m */; };
@@ -21,27 +26,35 @@
 		BB9BE9911F453D7D009FA8AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9BE9901F453D7D009FA8AC /* Assets.xcassets */; };
 		BB9BE9941F453D7D009FA8AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9BE9921F453D7D009FA8AC /* LaunchScreen.storyboard */; };
 		BB9BE99E1F453ED7009FA8AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9BE99D1F453ED7009FA8AC /* UIKit.framework */; };
-		BB9BE9A21F453F35009FA8AC /* UIControl+WRBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9A11F453F35009FA8AC /* UIControl+WRBlocks.m */; };
-		BB9BE9A51F4541C0009FA8AC /* UIButton+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9A41F4541C0009FA8AC /* UIButton+WRConvenience.m */; };
-		BB9BE9AF1F4542E6009FA8AC /* NSObject+WRJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9AE1F4542E6009FA8AC /* NSObject+WRJudge.m */; };
-		BB9BE9B61F4592BA009FA8AC /* UILabel+WRSize.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9B51F4592BA009FA8AC /* UILabel+WRSize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BB32DA311F467DF000D1A469 /* NSString+WRJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+WRJudge.h"; sourceTree = "<group>"; };
-		BB32DA321F467DF000D1A469 /* NSString+WRJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+WRJudge.m"; sourceTree = "<group>"; };
-		BB32DA341F4680FF00D1A469 /* NSDate+WRCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WRCalendar.h"; sourceTree = "<group>"; };
-		BB32DA351F4680FF00D1A469 /* NSDate+WRCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WRCalendar.m"; sourceTree = "<group>"; };
-		BB8D227D1F45D2BE00B83CD9 /* UIImage+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WRConvenience.h"; sourceTree = "<group>"; };
-		BB8D227E1F45D2BE00B83CD9 /* UIImage+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WRConvenience.m"; sourceTree = "<group>"; };
-		BB8D22801F45D87B00B83CD9 /* UILabel+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WRConvenience.h"; sourceTree = "<group>"; };
-		BB8D22811F45D87B00B83CD9 /* UILabel+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WRConvenience.m"; sourceTree = "<group>"; };
-		BB8D22831F45DAA900B83CD9 /* UITextField+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+WRConvenience.h"; sourceTree = "<group>"; };
-		BB8D22841F45DAA900B83CD9 /* UITextField+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WRConvenience.m"; sourceTree = "<group>"; };
-		BB8D22861F45E70000B83CD9 /* UIButton+WRExpand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WRExpand.h"; sourceTree = "<group>"; };
-		BB8D22871F45E70000B83CD9 /* UIButton+WRExpand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WRExpand.m"; sourceTree = "<group>"; };
-		BB8D22891F45EB6E00B83CD9 /* UITextField+WRContentChanged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+WRContentChanged.h"; sourceTree = "<group>"; };
-		BB8D228A1F45EB6E00B83CD9 /* UITextField+WRContentChanged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WRContentChanged.m"; sourceTree = "<group>"; };
+		BB0EF4781F7A03BA00CE3846 /* UIButton+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WRConvenience.h"; sourceTree = "<group>"; };
+		BB0EF4791F7A03BA00CE3846 /* UIButton+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WRConvenience.m"; sourceTree = "<group>"; };
+		BB0EF47A1F7A03BA00CE3846 /* UIButton+WRExpand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WRExpand.h"; sourceTree = "<group>"; };
+		BB0EF47B1F7A03BA00CE3846 /* UIButton+WRExpand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WRExpand.m"; sourceTree = "<group>"; };
+		BB0EF47C1F7A03BA00CE3846 /* UIControl+WRBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+WRBlocks.h"; sourceTree = "<group>"; };
+		BB0EF47D1F7A03BA00CE3846 /* UIControl+WRBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+WRBlocks.m"; sourceTree = "<group>"; };
+		BB0EF47E1F7A03BA00CE3846 /* UIImage+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WRConvenience.h"; sourceTree = "<group>"; };
+		BB0EF47F1F7A03BA00CE3846 /* UIImage+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WRConvenience.m"; sourceTree = "<group>"; };
+		BB0EF4801F7A03BA00CE3846 /* UILabel+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WRConvenience.h"; sourceTree = "<group>"; };
+		BB0EF4811F7A03BA00CE3846 /* UILabel+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WRConvenience.m"; sourceTree = "<group>"; };
+		BB0EF4821F7A03BA00CE3846 /* UILabel+WRSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WRSize.h"; sourceTree = "<group>"; };
+		BB0EF4831F7A03BA00CE3846 /* UILabel+WRSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WRSize.m"; sourceTree = "<group>"; };
+		BB0EF4841F7A03BA00CE3846 /* UITextField+WRContentChanged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+WRContentChanged.h"; sourceTree = "<group>"; };
+		BB0EF4851F7A03BA00CE3846 /* UITextField+WRContentChanged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WRContentChanged.m"; sourceTree = "<group>"; };
+		BB0EF4861F7A03BA00CE3846 /* UITextField+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+WRConvenience.h"; sourceTree = "<group>"; };
+		BB0EF4871F7A03BA00CE3846 /* UITextField+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WRConvenience.m"; sourceTree = "<group>"; };
+		BB0EF4881F7A03BA00CE3846 /* WRKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRKit.h; sourceTree = "<group>"; };
+		BB0EF48A1F7A03BA00CE3846 /* NSDate+WRCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WRCalendar.h"; sourceTree = "<group>"; };
+		BB0EF48B1F7A03BA00CE3846 /* NSDate+WRCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WRCalendar.m"; sourceTree = "<group>"; };
+		BB0EF48C1F7A03BA00CE3846 /* NSObject+WRJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WRJudge.h"; sourceTree = "<group>"; };
+		BB0EF48D1F7A03BA00CE3846 /* NSObject+WRJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WRJudge.m"; sourceTree = "<group>"; };
+		BB0EF48E1F7A03BA00CE3846 /* NSString+WRJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+WRJudge.h"; sourceTree = "<group>"; };
+		BB0EF48F1F7A03BA00CE3846 /* NSString+WRJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+WRJudge.m"; sourceTree = "<group>"; };
+		BB0EF4901F7A03BA00CE3846 /* WRFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRFoundation.h; sourceTree = "<group>"; };
+		BB0EF49C1F7A03D100CE3846 /* UIView+WRMongolian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WRMongolian.h"; sourceTree = "<group>"; };
+		BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WRMongolian.m"; sourceTree = "<group>"; };
 		BB9BE9811F453D7D009FA8AC /* WRKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WRKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9BE9851F453D7D009FA8AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB9BE9871F453D7D009FA8AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,16 +66,6 @@
 		BB9BE9931F453D7D009FA8AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB9BE9951F453D7D009FA8AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9BE99D1F453ED7009FA8AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		BB9BE9A01F453F35009FA8AC /* UIControl+WRBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+WRBlocks.h"; sourceTree = "<group>"; };
-		BB9BE9A11F453F35009FA8AC /* UIControl+WRBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+WRBlocks.m"; sourceTree = "<group>"; };
-		BB9BE9A31F4541C0009FA8AC /* UIButton+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WRConvenience.h"; sourceTree = "<group>"; };
-		BB9BE9A41F4541C0009FA8AC /* UIButton+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WRConvenience.m"; sourceTree = "<group>"; };
-		BB9BE9AD1F4542E6009FA8AC /* NSObject+WRJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WRJudge.h"; sourceTree = "<group>"; };
-		BB9BE9AE1F4542E6009FA8AC /* NSObject+WRJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WRJudge.m"; sourceTree = "<group>"; };
-		BB9BE9B01F454638009FA8AC /* WRFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRFoundation.h; sourceTree = "<group>"; };
-		BB9BE9B11F454651009FA8AC /* WRKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRKit.h; sourceTree = "<group>"; };
-		BB9BE9B41F4592BA009FA8AC /* UILabel+WRSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WRSize.h"; sourceTree = "<group>"; };
-		BB9BE9B51F4592BA009FA8AC /* UILabel+WRSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WRSize.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB0EF4771F7A03BA00CE3846 /* WRKit */ = {
+			isa = PBXGroup;
+			children = (
+				BB0EF4781F7A03BA00CE3846 /* UIButton+WRConvenience.h */,
+				BB0EF4791F7A03BA00CE3846 /* UIButton+WRConvenience.m */,
+				BB0EF47A1F7A03BA00CE3846 /* UIButton+WRExpand.h */,
+				BB0EF47B1F7A03BA00CE3846 /* UIButton+WRExpand.m */,
+				BB0EF47C1F7A03BA00CE3846 /* UIControl+WRBlocks.h */,
+				BB0EF47D1F7A03BA00CE3846 /* UIControl+WRBlocks.m */,
+				BB0EF47E1F7A03BA00CE3846 /* UIImage+WRConvenience.h */,
+				BB0EF47F1F7A03BA00CE3846 /* UIImage+WRConvenience.m */,
+				BB0EF4801F7A03BA00CE3846 /* UILabel+WRConvenience.h */,
+				BB0EF4811F7A03BA00CE3846 /* UILabel+WRConvenience.m */,
+				BB0EF4821F7A03BA00CE3846 /* UILabel+WRSize.h */,
+				BB0EF4831F7A03BA00CE3846 /* UILabel+WRSize.m */,
+				BB0EF4841F7A03BA00CE3846 /* UITextField+WRContentChanged.h */,
+				BB0EF4851F7A03BA00CE3846 /* UITextField+WRContentChanged.m */,
+				BB0EF4861F7A03BA00CE3846 /* UITextField+WRConvenience.h */,
+				BB0EF4871F7A03BA00CE3846 /* UITextField+WRConvenience.m */,
+				BB0EF49C1F7A03D100CE3846 /* UIView+WRMongolian.h */,
+				BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */,
+				BB0EF4881F7A03BA00CE3846 /* WRKit.h */,
+			);
+			name = WRKit;
+			path = "../../WRKit-Foundation/WRKit";
+			sourceTree = "<group>";
+		};
+		BB0EF4891F7A03BA00CE3846 /* WRFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				BB0EF48A1F7A03BA00CE3846 /* NSDate+WRCalendar.h */,
+				BB0EF48B1F7A03BA00CE3846 /* NSDate+WRCalendar.m */,
+				BB0EF48C1F7A03BA00CE3846 /* NSObject+WRJudge.h */,
+				BB0EF48D1F7A03BA00CE3846 /* NSObject+WRJudge.m */,
+				BB0EF48E1F7A03BA00CE3846 /* NSString+WRJudge.h */,
+				BB0EF48F1F7A03BA00CE3846 /* NSString+WRJudge.m */,
+				BB0EF4901F7A03BA00CE3846 /* WRFoundation.h */,
+			);
+			name = WRFoundation;
+			path = "../../WRKit-Foundation/WRFoundation";
+			sourceTree = "<group>";
+		};
 		BB9BE9781F453D7D009FA8AC = {
 			isa = PBXGroup;
 			children = (
@@ -101,8 +146,8 @@
 				BB9BE9881F453D7D009FA8AC /* AppDelegate.m */,
 				BB9BE98A1F453D7D009FA8AC /* ViewController.h */,
 				BB9BE98B1F453D7D009FA8AC /* ViewController.m */,
-				BB9BE9AC1F4542D0009FA8AC /* WRFoundation */,
-				BB9BE99B1F453E0E009FA8AC /* WRKit */,
+				BB0EF4891F7A03BA00CE3846 /* WRFoundation */,
+				BB0EF4771F7A03BA00CE3846 /* WRKit */,
 				BB9BE98D1F453D7D009FA8AC /* Main.storyboard */,
 				BB9BE9901F453D7D009FA8AC /* Assets.xcassets */,
 				BB9BE9921F453D7D009FA8AC /* LaunchScreen.storyboard */,
@@ -120,50 +165,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BB9BE99B1F453E0E009FA8AC /* WRKit */ = {
-			isa = PBXGroup;
-			children = (
-				BB9BE9B11F454651009FA8AC /* WRKit.h */,
-				BB8D227D1F45D2BE00B83CD9 /* UIImage+WRConvenience.h */,
-				BB8D227E1F45D2BE00B83CD9 /* UIImage+WRConvenience.m */,
-				BB9BE9A01F453F35009FA8AC /* UIControl+WRBlocks.h */,
-				BB9BE9A11F453F35009FA8AC /* UIControl+WRBlocks.m */,
-				BB9BE9A31F4541C0009FA8AC /* UIButton+WRConvenience.h */,
-				BB9BE9A41F4541C0009FA8AC /* UIButton+WRConvenience.m */,
-				BB8D22861F45E70000B83CD9 /* UIButton+WRExpand.h */,
-				BB8D22871F45E70000B83CD9 /* UIButton+WRExpand.m */,
-				BB8D22801F45D87B00B83CD9 /* UILabel+WRConvenience.h */,
-				BB8D22811F45D87B00B83CD9 /* UILabel+WRConvenience.m */,
-				BB8D22831F45DAA900B83CD9 /* UITextField+WRConvenience.h */,
-				BB8D22841F45DAA900B83CD9 /* UITextField+WRConvenience.m */,
-				BB8D22891F45EB6E00B83CD9 /* UITextField+WRContentChanged.h */,
-				BB8D228A1F45EB6E00B83CD9 /* UITextField+WRContentChanged.m */,
-				BB9BE9B41F4592BA009FA8AC /* UILabel+WRSize.h */,
-				BB9BE9B51F4592BA009FA8AC /* UILabel+WRSize.m */,
-			);
-			path = WRKit;
-			sourceTree = "<group>";
-		};
 		BB9BE99C1F453ED7009FA8AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				BB9BE99D1F453ED7009FA8AC /* UIKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BB9BE9AC1F4542D0009FA8AC /* WRFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				BB9BE9B01F454638009FA8AC /* WRFoundation.h */,
-				BB9BE9AD1F4542E6009FA8AC /* NSObject+WRJudge.h */,
-				BB9BE9AE1F4542E6009FA8AC /* NSObject+WRJudge.m */,
-				BB32DA311F467DF000D1A469 /* NSString+WRJudge.h */,
-				BB32DA321F467DF000D1A469 /* NSString+WRJudge.m */,
-				BB32DA341F4680FF00D1A469 /* NSDate+WRCalendar.h */,
-				BB32DA351F4680FF00D1A469 /* NSDate+WRCalendar.m */,
-			);
-			path = WRFoundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,20 +244,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB9BE9B61F4592BA009FA8AC /* UILabel+WRSize.m in Sources */,
-				BB9BE9A21F453F35009FA8AC /* UIControl+WRBlocks.m in Sources */,
-				BB8D22851F45DAA900B83CD9 /* UITextField+WRConvenience.m in Sources */,
-				BB32DA361F4680FF00D1A469 /* NSDate+WRCalendar.m in Sources */,
+				BB0EF49B1F7A03BB00CE3846 /* NSString+WRJudge.m in Sources */,
 				BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */,
-				BB32DA331F467DF000D1A469 /* NSString+WRJudge.m in Sources */,
-				BB9BE9AF1F4542E6009FA8AC /* NSObject+WRJudge.m in Sources */,
-				BB8D22881F45E70000B83CD9 /* UIButton+WRExpand.m in Sources */,
-				BB8D227F1F45D2BE00B83CD9 /* UIImage+WRConvenience.m in Sources */,
+				BB0EF4971F7A03BB00CE3846 /* UITextField+WRContentChanged.m in Sources */,
+				BB0EF4951F7A03BB00CE3846 /* UILabel+WRConvenience.m in Sources */,
+				BB0EF4981F7A03BB00CE3846 /* UITextField+WRConvenience.m in Sources */,
+				BB0EF4921F7A03BB00CE3846 /* UIButton+WRExpand.m in Sources */,
 				BB9BE9891F453D7D009FA8AC /* AppDelegate.m in Sources */,
-				BB9BE9A51F4541C0009FA8AC /* UIButton+WRConvenience.m in Sources */,
-				BB8D228B1F45EB6E00B83CD9 /* UITextField+WRContentChanged.m in Sources */,
+				BB0EF4911F7A03BB00CE3846 /* UIButton+WRConvenience.m in Sources */,
+				BB0EF4991F7A03BB00CE3846 /* NSDate+WRCalendar.m in Sources */,
+				BB0EF49A1F7A03BB00CE3846 /* NSObject+WRJudge.m in Sources */,
+				BB0EF4961F7A03BB00CE3846 /* UILabel+WRSize.m in Sources */,
+				BB0EF4931F7A03BB00CE3846 /* UIControl+WRBlocks.m in Sources */,
+				BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */,
 				BB9BE9861F453D7D009FA8AC /* main.m in Sources */,
-				BB8D22821F45D87B00B83CD9 /* UILabel+WRConvenience.m in Sources */,
+				BB0EF4941F7A03BB00CE3846 /* UIImage+WRConvenience.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

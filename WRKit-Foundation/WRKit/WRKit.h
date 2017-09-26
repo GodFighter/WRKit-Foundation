@@ -17,4 +17,6 @@
 
 #import "UILabel+WRSize.h"
 
+#import "UIView+WRMongolian.h"
+
 #endif /* WRKit_h */
