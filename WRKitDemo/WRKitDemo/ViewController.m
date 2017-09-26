@@ -10,6 +10,7 @@
 #import "WRFoundation.h"
 
 #import "ViewController.h"
+#import "WRTableViewCell.h"
 
 @interface ViewController ()
 
@@ -28,12 +29,17 @@
     self.view.backgroundColor = [UIColor redColor];
     WRTableViewDataSource *dataSource = [WRTableViewDataSource new];
     dataSource.dataSourceArray = [NSMutableArray arrayWithArray:@[@"1", @"2"]];
+    dataSource.cellHeightArray = [NSMutableArray arrayWithArray:@[@"100", @"30"]];
+    dataSource.cellClassName = NSStringFromClass(WRTableViewCell.class);
     
     WRTableView *tableView = [[WRTableView alloc] init];
     tableView.dataSource = dataSource;
     
     [self.view addSubview:tableView];
     tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    tableView.tableViewCellDidSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
+
+    };
   
 }
 

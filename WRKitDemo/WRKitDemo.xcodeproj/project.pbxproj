@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560273EE1F7A98C30072A260 /* WRTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560273ED1F7A98C30072A260 /* WRTableViewCell.m */; };
 		BB0EF4911F7A03BB00CE3846 /* UIButton+WRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4791F7A03BA00CE3846 /* UIButton+WRConvenience.m */; };
 		BB0EF4921F7A03BB00CE3846 /* UIButton+WRExpand.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF47B1F7A03BA00CE3846 /* UIButton+WRExpand.m */; };
 		BB0EF4931F7A03BB00CE3846 /* UIControl+WRBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF47D1F7A03BA00CE3846 /* UIControl+WRBlocks.m */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		560273EC1F7A98C30072A260 /* WRTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRTableViewCell.h; sourceTree = "<group>"; };
+		560273ED1F7A98C30072A260 /* WRTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRTableViewCell.m; sourceTree = "<group>"; };
 		BB0EF4781F7A03BA00CE3846 /* UIButton+WRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WRConvenience.h"; sourceTree = "<group>"; };
 		BB0EF4791F7A03BA00CE3846 /* UIButton+WRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WRConvenience.m"; sourceTree = "<group>"; };
 		BB0EF47A1F7A03BA00CE3846 /* UIButton+WRExpand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WRExpand.h"; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				BB9BE9881F453D7D009FA8AC /* AppDelegate.m */,
 				BB9BE98A1F453D7D009FA8AC /* ViewController.h */,
 				BB9BE98B1F453D7D009FA8AC /* ViewController.m */,
+				560273EC1F7A98C30072A260 /* WRTableViewCell.h */,
+				560273ED1F7A98C30072A260 /* WRTableViewCell.m */,
 				BB0EF4891F7A03BA00CE3846 /* WRFoundation */,
 				BB0EF4771F7A03BA00CE3846 /* WRKit */,
 				BB9BE98D1F453D7D009FA8AC /* Main.storyboard */,
@@ -262,6 +267,7 @@
 				BB0EF4951F7A03BB00CE3846 /* UILabel+WRConvenience.m in Sources */,
 				BB0EF4981F7A03BB00CE3846 /* UITextField+WRConvenience.m in Sources */,
 				BB0EF4921F7A03BB00CE3846 /* UIButton+WRExpand.m in Sources */,
+				560273EE1F7A98C30072A260 /* WRTableViewCell.m in Sources */,
 				BB9BE9891F453D7D009FA8AC /* AppDelegate.m in Sources */,
 				BB0EF4911F7A03BB00CE3846 /* UIButton+WRConvenience.m in Sources */,
 				BB0EF4991F7A03BB00CE3846 /* NSDate+WRCalendar.m in Sources */,

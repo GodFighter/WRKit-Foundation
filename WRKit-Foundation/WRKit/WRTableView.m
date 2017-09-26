@@ -62,10 +62,13 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kWRTableViewCellIdentifier];
-    cell.backgroundColor = [UIColor blueColor];
+//    cell.backgroundColor = [UIColor blueColor];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.tableViewCellDidSelectedBlock) {
+        self.tableViewCellDidSelectedBlock(tableView, indexPath);
+    }
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell setSelected:NO animated:YES];
 }
@@ -78,7 +81,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:[NSObject wr_isEmtpty:self.cellClassName] ? [UITableViewCell class] : NSClassFromString(self.cellClassName)
+        [_tableView registerClass:[NSObject wr_isEmtpty:self.dataSource.cellClassName] ? [UITableViewCell class] : NSClassFromString(self.dataSource.cellClassName)
            forCellReuseIdentifier:kWRTableViewCellIdentifier];
         [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"header"];
 
@@ -113,16 +116,13 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
                                                                             attribute: NSLayoutAttributeBottom
                                                                            multiplier: 1.0
                                                                              constant: 0];
-
         [self addConstraints:@[
-                                     leftConstraint,
-                                     topConstraint,
-                                     rightConstraint,
-                                     bottomConstraint
-                                     ]
+                               leftConstraint,
+                               topConstraint,
+                               rightConstraint,
+                               bottomConstraint
+                               ]
          ];
-
-        
     }
     return _tableView;
 }
