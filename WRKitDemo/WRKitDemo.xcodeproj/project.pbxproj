@@ -19,6 +19,7 @@
 		BB0EF49A1F7A03BB00CE3846 /* NSObject+WRJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF48D1F7A03BA00CE3846 /* NSObject+WRJudge.m */; };
 		BB0EF49B1F7A03BB00CE3846 /* NSString+WRJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF48F1F7A03BA00CE3846 /* NSString+WRJudge.m */; };
 		BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */; };
+		BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4B81F7A2E5500CE3846 /* NSObject+WRUserDefaults.m */; };
 		BB9BE9861F453D7D009FA8AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9851F453D7D009FA8AC /* main.m */; };
 		BB9BE9891F453D7D009FA8AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9881F453D7D009FA8AC /* AppDelegate.m */; };
 		BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE98B1F453D7D009FA8AC /* ViewController.m */; };
@@ -55,6 +56,8 @@
 		BB0EF4901F7A03BA00CE3846 /* WRFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRFoundation.h; sourceTree = "<group>"; };
 		BB0EF49C1F7A03D100CE3846 /* UIView+WRMongolian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WRMongolian.h"; sourceTree = "<group>"; };
 		BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WRMongolian.m"; sourceTree = "<group>"; };
+		BB0EF4B71F7A2E5500CE3846 /* NSObject+WRUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+WRUserDefaults.h"; sourceTree = "<group>"; };
+		BB0EF4B81F7A2E5500CE3846 /* NSObject+WRUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WRUserDefaults.m"; sourceTree = "<group>"; };
 		BB9BE9811F453D7D009FA8AC /* WRKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WRKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9BE9851F453D7D009FA8AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB9BE9871F453D7D009FA8AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				BB0EF48B1F7A03BA00CE3846 /* NSDate+WRCalendar.m */,
 				BB0EF48C1F7A03BA00CE3846 /* NSObject+WRJudge.h */,
 				BB0EF48D1F7A03BA00CE3846 /* NSObject+WRJudge.m */,
+				BB0EF4B71F7A2E5500CE3846 /* NSObject+WRUserDefaults.h */,
+				BB0EF4B81F7A2E5500CE3846 /* NSObject+WRUserDefaults.m */,
 				BB0EF48E1F7A03BA00CE3846 /* NSString+WRJudge.h */,
 				BB0EF48F1F7A03BA00CE3846 /* NSString+WRJudge.m */,
 				BB0EF4901F7A03BA00CE3846 /* WRFoundation.h */,
@@ -199,7 +204,7 @@
 		BB9BE9791F453D7D009FA8AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = xianghui;
 				TargetAttributes = {
 					BB9BE9801F453D7D009FA8AC = {
@@ -247,6 +252,7 @@
 				BB0EF49B1F7A03BB00CE3846 /* NSString+WRJudge.m in Sources */,
 				BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */,
 				BB0EF4971F7A03BB00CE3846 /* UITextField+WRContentChanged.m in Sources */,
+				BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */,
 				BB0EF4951F7A03BB00CE3846 /* UILabel+WRConvenience.m in Sources */,
 				BB0EF4981F7A03BB00CE3846 /* UITextField+WRConvenience.m in Sources */,
 				BB0EF4921F7A03BB00CE3846 /* UIButton+WRExpand.m in Sources */,
@@ -294,7 +300,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -302,7 +310,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -343,7 +355,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -351,7 +365,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
