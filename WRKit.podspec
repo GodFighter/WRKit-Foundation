@@ -12,12 +12,12 @@ s.frameworks   = 'UIKit'
 s.social_media_url = "http://weibo.com/huigedang/home?wvr=5&lf=reg"
 s.requires_arc = true
 s.subspec 'WRKit' do |ss|
-    ss.source_files = 'WRKit/*.{h,m}'
-    ss.dependency 'WRFoundation'
+    ss.source_files = 'WRKit-Foundation/WRKit/*.{h,m}'
+    ss.dependency 'WRKit-Foundation/WRFoundation'
 end
 s.subspec 'WRFoundation' do |ss|
-    ss.source_files = 'WRFoundation/*.{h,m}'
-    ss.dependency 'WRKit'
+    ss.source_files = 'WRKit-Foundation/WRFoundation/*.{h,m}'
+    ss.dependency 'WRKit-Foundation/WRKit'
 end
 
 end
