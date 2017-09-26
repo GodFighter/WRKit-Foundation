@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "WRKit"
-s.version      = "1.0.10"
+s.version      = "1.0.11"
 s.summary      = "kit & funcation的便利构造方法."
 s.description  = "kit & funcation的便利构造方法，常用视图的便利构造，常用的判断方法."
 s.homepage     = "https://github.com/GodFighter/WRKit-Foundation.git"
@@ -14,10 +14,7 @@ s.requires_arc = true
 s.subspec 'WRFoundation' do |ss|
     ss.source_files = 'WRKit-Foundation/WRFoundation/*.{h,m}'
 end
-s.subspec 'WRKit' do |ss|
-    ss.dependency 'WRFoundation'
-    ss.source_files = 'WRKit-Foundation/WRKit/*.{h,m}'
-end
+
 
 end
 
