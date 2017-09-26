@@ -7,11 +7,14 @@ s.homepage     = "https://github.com/GodFighter/WRKit-Foundation.git"
 s.license      = "MIT"
 s.author       = { "Leo Xiang" => "xianghui_ios@163.com" }
 s.source       = { :git => "https://github.com/GodFighter/WRKit-Foundation.git", :tag => s.version }
-s.source_files = 'WRKit/*.{h,m}', 'WRFoundation/*.{h,m}'
 s.ios.deployment_target = '8.0'
 s.frameworks   = 'UIKit'
 s.social_media_url = "http://weibo.com/huigedang/home?wvr=5&lf=reg"
 s.requires_arc = true
-
+s.subspec 'WRKit' do |kit|
+    kit.source_files = 'WRKit/*.{h,m}'
+end
+s.subspec 'WRFoundation' do |foundation|
+    foundation.source_files = 'WRFoundation/*.{h,m}'
 end
 
