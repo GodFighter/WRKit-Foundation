@@ -27,6 +27,7 @@
 		BB9BE9911F453D7D009FA8AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9BE9901F453D7D009FA8AC /* Assets.xcassets */; };
 		BB9BE9941F453D7D009FA8AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9BE9921F453D7D009FA8AC /* LaunchScreen.storyboard */; };
 		BB9BE99E1F453ED7009FA8AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9BE99D1F453ED7009FA8AC /* UIKit.framework */; };
+		BBA19A0E1F7A3946000102A2 /* WRTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA19A0D1F7A3946000102A2 /* WRTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,8 @@
 		BB9BE9931F453D7D009FA8AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB9BE9951F453D7D009FA8AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9BE99D1F453ED7009FA8AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BBA19A0C1F7A3946000102A2 /* WRTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRTableView.h; sourceTree = "<group>"; };
+		BBA19A0D1F7A3946000102A2 /* WRTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				BB0EF4871F7A03BA00CE3846 /* UITextField+WRConvenience.m */,
 				BB0EF49C1F7A03D100CE3846 /* UIView+WRMongolian.h */,
 				BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */,
+				BBA19A0C1F7A3946000102A2 /* WRTableView.h */,
+				BBA19A0D1F7A3946000102A2 /* WRTableView.m */,
 				BB0EF4881F7A03BA00CE3846 /* WRKit.h */,
 			);
 			name = WRKit;
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0EF49B1F7A03BB00CE3846 /* NSString+WRJudge.m in Sources */,
+				BBA19A0E1F7A3946000102A2 /* WRTableView.m in Sources */,
 				BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */,
 				BB0EF4971F7A03BB00CE3846 /* UITextField+WRContentChanged.m in Sources */,
 				BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */,

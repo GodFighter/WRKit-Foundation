@@ -11,7 +11,7 @@
 
 @implementation UITextField (WRContentChanged)
 
-- (void)wr_addTextChangedBlock:(nullable void (^)())success {
+- (void)wr_addTextChangedBlock:(nullable void (^)(void))success {
     [self wr_addEventHandler:^(id sender) {
         if (self.markedTextRange == nil) {
             success();

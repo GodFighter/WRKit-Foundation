@@ -19,4 +19,6 @@
 
 #import "UIView+WRMongolian.h"
 
+#import "WRTableView.h"
+
 #endif /* WRKit_h */

@@ -24,6 +24,16 @@
     NSLog(@"%d",string.wr_isPhoneNumber);
     ;
     NSLog(@"%ld==%ld==%ld",(long)[NSDate date].day, (long)[NSDate date].month, (long)[NSDate date].weekday);
+    
+    self.view.backgroundColor = [UIColor redColor];
+    WRTableViewDataSource *dataSource = [WRTableViewDataSource new];
+    dataSource.dataSourceArray = [NSMutableArray arrayWithArray:@[@"1", @"2"]];
+    
+    WRTableView *tableView = [[WRTableView alloc] init];
+    tableView.dataSource = dataSource;
+    
+    [self.view addSubview:tableView];
+    tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
   
 }
 

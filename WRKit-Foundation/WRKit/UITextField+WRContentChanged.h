@@ -10,6 +10,6 @@
 /** 文本发生变化 */
 @interface UITextField (WRContentChanged)
 /** 文本内容变化回调 */
-- (void)wr_addTextChangedBlock:(nullable void (^)())success;
+- (void)wr_addTextChangedBlock:(nullable void (^)(void))success;
 
 @end

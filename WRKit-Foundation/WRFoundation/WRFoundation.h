@@ -10,6 +10,7 @@
 #define WRFoundation_h
 
 #import "NSObject+WRJudge.h"
+#import "NSObject+WRUserDefaults.h"
 #import "NSString+WRJudge.h"
 #import "NSDate+WRCalendar.h"
 
