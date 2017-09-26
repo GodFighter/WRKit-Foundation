@@ -17,7 +17,6 @@ s.subspec 'WRKit' do |ss|
 end
 s.subspec 'WRFoundation' do |ss|
     ss.source_files = 'WRKit-Foundation/WRFoundation/*.{h,m}'
-    ss.dependency 'WRKit-Foundation/WRKit'
 end
 
 end
