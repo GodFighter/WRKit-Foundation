@@ -17,6 +17,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 - (instancetype)init {
     if (self = [super init]) {
         self.dataSourceArray = [NSMutableArray arrayWithCapacity:10];
+        self.cellIdentiferArray = [NSMutableArray arrayWithObject:kWRTableViewCellIdentifier];
     }
     return self;
 }
@@ -131,5 +132,8 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         _dataSource = [WRTableViewDataSource new];
     }
     return _dataSource;
+}
+- (nonnull NSString *)cellIdentifierWiithIndexPath:(NSIndexPath *)indexPath {
+    return kWRTableViewCellIdentifier;
 }
 @end

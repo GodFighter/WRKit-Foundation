@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSMutableArray *dataSourceArray;
 /** cell高度数组 */
 @property (strong, nonatomic) NSMutableArray *cellHeightArray;
+/** cell 标识数组 */
+@property (strong, nonatomic) NSMutableArray *cellIdentiferArray;
 /** cell 类名 */
 @property (copy, nonatomic) NSString *cellClassName;
 
