@@ -20,5 +20,6 @@
 #import "UIView+WRMongolian.h"
 
 #import "WRTableView.h"
+#import "WRCollectionView.h"
 
 #endif /* WRKit_h */

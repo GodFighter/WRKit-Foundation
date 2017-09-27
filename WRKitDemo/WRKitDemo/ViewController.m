@@ -28,6 +28,23 @@
     
     self.view.backgroundColor = [UIColor redColor];
     
+//    [self installTableView];
+}
+- (void)installCollectionView {
+    WRCollectionViewObject *obj0 = [WRCollectionViewObject new];
+    obj0.type = WRCollectionViewObjectType_Header;
+    obj0.identifier = @"header";
+    obj0.headerSize = 50;
+    
+    WRCollectionViewObject *obj1 = [WRCollectionViewObject new];
+    obj1.type = WRCollectionViewObjectType_Footer;
+    obj1.identifier = @"footer";
+    obj1.footerSize = 50;
+
+    
+    
+}
+- (void)installTableView {
     WRTableViewCellObject *object1 = [WRTableViewCellObject new];
     object1.identifier = @"1";
     object1.cellClassName = NSStringFromClass(WRTableViewCell.class);
@@ -37,7 +54,7 @@
     object2.identifier = @"1";
     object2.cellClassName = NSStringFromClass(WRTableViewCell.class);
     object2.height = 50;
-
+    
     WRTableViewDataSource *dataSource = [WRTableViewDataSource new];
     dataSource.objectsArray = [NSMutableArray arrayWithArray:@[@[
                                                                    object1,
@@ -52,11 +69,9 @@
     [self.view addSubview:tableView];
     tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     tableView.tableViewCellDidSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
-
+        
     };
-  
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

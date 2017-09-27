@@ -21,6 +21,7 @@
 		BB0EF49B1F7A03BB00CE3846 /* NSString+WRJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF48F1F7A03BA00CE3846 /* NSString+WRJudge.m */; };
 		BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */; };
 		BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4B81F7A2E5500CE3846 /* NSObject+WRUserDefaults.m */; };
+		BB161E681F7B8C4D005B73C7 /* WRCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */; };
 		BB9BE9861F453D7D009FA8AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9851F453D7D009FA8AC /* main.m */; };
 		BB9BE9891F453D7D009FA8AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9881F453D7D009FA8AC /* AppDelegate.m */; };
 		BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE98B1F453D7D009FA8AC /* ViewController.m */; };
@@ -62,6 +63,8 @@
 		BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WRMongolian.m"; sourceTree = "<group>"; };
 		BB0EF4B71F7A2E5500CE3846 /* NSObject+WRUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+WRUserDefaults.h"; sourceTree = "<group>"; };
 		BB0EF4B81F7A2E5500CE3846 /* NSObject+WRUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WRUserDefaults.m"; sourceTree = "<group>"; };
+		BB161E661F7B8C4D005B73C7 /* WRCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCollectionView.h; sourceTree = "<group>"; };
+		BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCollectionView.m; sourceTree = "<group>"; };
 		BB9BE9811F453D7D009FA8AC /* WRKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WRKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9BE9851F453D7D009FA8AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB9BE9871F453D7D009FA8AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */,
 				BBA19A0C1F7A3946000102A2 /* WRTableView.h */,
 				BBA19A0D1F7A3946000102A2 /* WRTableView.m */,
+				BB161E661F7B8C4D005B73C7 /* WRCollectionView.h */,
+				BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */,
 				BB0EF4881F7A03BA00CE3846 /* WRKit.h */,
 			);
 			name = WRKit;
@@ -272,6 +277,7 @@
 				BB0EF4911F7A03BB00CE3846 /* UIButton+WRConvenience.m in Sources */,
 				BB0EF4991F7A03BB00CE3846 /* NSDate+WRCalendar.m in Sources */,
 				BB0EF49A1F7A03BB00CE3846 /* NSObject+WRJudge.m in Sources */,
+				BB161E681F7B8C4D005B73C7 /* WRCollectionView.m in Sources */,
 				BB0EF4961F7A03BB00CE3846 /* UILabel+WRSize.m in Sources */,
 				BB0EF4931F7A03BB00CE3846 /* UIControl+WRBlocks.m in Sources */,
 				BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */,
