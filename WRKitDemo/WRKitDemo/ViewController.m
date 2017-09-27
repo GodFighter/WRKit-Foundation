@@ -44,7 +44,7 @@
                                                                    object2
                                                                    ]
                                                                ]];
-    
+    dataSource.tableViewHeaderViewHeight = 100;
     
     WRTableView *tableView = [[WRTableView alloc] init];
     tableView.dataSource = dataSource;

@@ -30,6 +30,8 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 - (instancetype)init {
     if (self = [super init]) {
         self.objectsArray = [NSMutableArray arrayWithCapacity:10];
+        self.tableViewHeaderViewHeight = 0;
+        self.tableViewFooterViewHeight = 0;
     }
     return self;
 }
@@ -58,10 +60,10 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 }
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.1;
+    return self.dataSource.tableViewHeaderViewHeight <= 0 ? 0.1 : self.dataSource.tableViewHeaderViewHeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.1;
+    return self.dataSource.tableViewFooterViewHeight <= 0 ? 0.1 : self.dataSource.tableViewFooterViewHeight;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return nil;

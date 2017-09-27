@@ -29,6 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
  @note 包含 WRTableViewCellObject 实例的数组
  */
 @property (strong, nonatomic) NSMutableArray <NSArray <WRTableViewCellObject *> *> *objectsArray;
+/** 表视图头视图高度 */
+@property (assign, nonatomic) CGFloat tableViewHeaderViewHeight;
+/** 表视图头视图高度 */
+@property (assign, nonatomic) CGFloat tableViewFooterViewHeight;
 
 @end
 #pragma mark - 
