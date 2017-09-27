@@ -7,16 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark -
-@interface WRTableViewDataSource : NSObject
-/** 数据源数组 */
-@property (strong, nonatomic) NSMutableArray *dataSourceArray;
-/** cell高度数组 */
-@property (strong, nonatomic) NSMutableArray *cellHeightArray;
-/** cell 标识数组 */
-@property (strong, nonatomic) NSMutableArray *cellIdentiferArray;
+/** cell 的对象 */
+@interface WRTableViewCellObject : NSObject
+/** 标识 */
+@property (copy, nonatomic) NSString *identifier;
 /** cell 类名 */
 @property (copy, nonatomic) NSString *cellClassName;
+/** 高
+ @note 默认44
+ */
+@property (assign, nonatomic) CGFloat height;
+
+@end
+
+#pragma mark -
+@interface WRTableViewDataSource : NSObject
+/** 对象数组
+ @note 包含 WRTableViewCellObject 实例的数组
+ */
+@property (strong, nonatomic) NSMutableArray <NSArray <WRTableViewCellObject *> *> *objectsArray;
 
 @end
 #pragma mark - 
@@ -32,4 +44,5 @@
 */
 @property (copy, nonatomic) void (^tableViewCellDidSelectedBlock)(UITableView *tableView, NSIndexPath *indexPath);
 
+NS_ASSUME_NONNULL_END
 @end

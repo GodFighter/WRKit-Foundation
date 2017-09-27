@@ -12,12 +12,24 @@
 static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifier";
 
 #pragma mark -
+@implementation WRTableViewCellObject
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.identifier = kWRTableViewCellIdentifier;
+        self.height = 44;
+        self.cellClassName = NSStringFromClass(UITableViewCell.class);
+    }
+    return self;
+}
+
+@end
+#pragma mark -
 @implementation WRTableViewDataSource
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.dataSourceArray = [NSMutableArray arrayWithCapacity:10];
-        self.cellIdentiferArray = [NSMutableArray arrayWithObject:kWRTableViewCellIdentifier];
+        self.objectsArray = [NSMutableArray arrayWithCapacity:10];
     }
     return self;
 }
@@ -35,6 +47,15 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         self.tableView.hidden = NO;
     }
 }
+- (nullable WRTableViewCellObject *)objectForIndexpath:(NSIndexPath *)indexPath {
+    if (self.dataSource.objectsArray.count <= indexPath.section ||
+        [self.dataSource.objectsArray[indexPath.section] count] < indexPath.item) {
+        return nil;
+    }
+    NSArray *sectionArray = self.dataSource.objectsArray[indexPath.section];
+    WRTableViewCellObject *cellObject = sectionArray[indexPath.item];
+    return cellObject;
+}
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.1;
@@ -48,22 +69,27 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return nil;
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.dataSource.objectsArray.count;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.dataSourceArray.count;
+    NSArray *sectionArray = self.dataSource.objectsArray[section];
+    return sectionArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = 44;
-    if (self.dataSource.cellHeightArray.count > 0) {
-        height = [self.dataSource.cellHeightArray.firstObject floatValue];
-        if (self.dataSource.cellHeightArray.count > indexPath.item) {
-            height = [self.dataSource.cellHeightArray[indexPath.item] floatValue];
-        }
+    WRTableViewCellObject *cellObject = [self objectForIndexpath:indexPath];
+    if ([NSObject wr_isEmtpty:cellObject]) {
+        return 44;
     }
-    return height;
+    return cellObject.height;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kWRTableViewCellIdentifier];
-//    cell.backgroundColor = [UIColor blueColor];
+    WRTableViewCellObject *cellObject = [self objectForIndexpath:indexPath];
+    NSString *identifier = kWRTableViewCellIdentifier;
+    if (![NSObject wr_isEmtpty:cellObject]) {
+        identifier = cellObject.identifier;
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,8 +108,21 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:[NSObject wr_isEmtpty:self.dataSource.cellClassName] ? [UITableViewCell class] : NSClassFromString(self.dataSource.cellClassName)
-           forCellReuseIdentifier:kWRTableViewCellIdentifier];
+        
+        NSMutableSet *cellIdentifierSet = [NSMutableSet setWithCapacity:2];
+        NSMutableDictionary *cellClassNameDic = [NSMutableDictionary dictionaryWithCapacity:2];
+        
+        for (NSArray *objectsArray in self.dataSource.objectsArray) {
+            for (WRTableViewCellObject *cellObject in objectsArray) {
+                [cellIdentifierSet addObject:cellObject.identifier];
+                [cellClassNameDic setObject:cellObject.cellClassName forKey:cellObject.identifier];
+            }
+        }
+        for (NSInteger i = 0; i < cellIdentifierSet.count; i++) {
+            NSString *cellIdentifier = cellIdentifierSet.allObjects[i];
+            NSString *cellClassName = cellClassNameDic[cellIdentifier];
+            [_tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellIdentifier];
+        }
         [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"header"];
 
         [self addSubview:_tableView];
@@ -132,8 +171,5 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         _dataSource = [WRTableViewDataSource new];
     }
     return _dataSource;
-}
-- (nonnull NSString *)cellIdentifierWiithIndexPath:(NSIndexPath *)indexPath {
-    return kWRTableViewCellIdentifier;
 }
 @end

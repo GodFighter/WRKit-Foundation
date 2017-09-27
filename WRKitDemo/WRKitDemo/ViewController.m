@@ -27,10 +27,24 @@
     NSLog(@"%ld==%ld==%ld",(long)[NSDate date].day, (long)[NSDate date].month, (long)[NSDate date].weekday);
     
     self.view.backgroundColor = [UIColor redColor];
+    
+    WRTableViewCellObject *object1 = [WRTableViewCellObject new];
+    object1.identifier = @"1";
+    object1.cellClassName = NSStringFromClass(WRTableViewCell.class);
+    object1.height = 50;
+    
+    WRTableViewCellObject *object2 = [WRTableViewCellObject new];
+    object2.identifier = @"1";
+    object2.cellClassName = NSStringFromClass(WRTableViewCell.class);
+    object2.height = 50;
+
     WRTableViewDataSource *dataSource = [WRTableViewDataSource new];
-    dataSource.dataSourceArray = [NSMutableArray arrayWithArray:@[@"1", @"2"]];
-    dataSource.cellHeightArray = [NSMutableArray arrayWithArray:@[@"100", @"30"]];
-    dataSource.cellClassName = NSStringFromClass(WRTableViewCell.class);
+    dataSource.objectsArray = [NSMutableArray arrayWithArray:@[@[
+                                                                   object1,
+                                                                   object2
+                                                                   ]
+                                                               ]];
+    
     
     WRTableView *tableView = [[WRTableView alloc] init];
     tableView.dataSource = dataSource;
