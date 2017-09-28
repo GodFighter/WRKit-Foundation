@@ -140,10 +140,10 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
 - (void)parseDataSource {
     self.attributesArray = [NSMutableArray arrayWithCapacity:10];
 
+    UICollectionViewLayoutAttributes *lastAttributes = nil;
     for (NSInteger section = 0; section < self.dataSourcesArray.count; section++) {
         WRCollectionViewDataSource *dataSource = self.dataSourcesArray[section];
         
-        UICollectionViewLayoutAttributes *lastAttributes = nil;
         for (NSInteger item = 0; item < dataSource.objectsArray.count; item++) {
             WRCollectionViewObject *object = dataSource.objectsArray[item];
             
