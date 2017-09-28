@@ -30,6 +30,7 @@
 		BB9BE9941F453D7D009FA8AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9BE9921F453D7D009FA8AC /* LaunchScreen.storyboard */; };
 		BB9BE99E1F453ED7009FA8AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9BE99D1F453ED7009FA8AC /* UIKit.framework */; };
 		BBA19A0E1F7A3946000102A2 /* WRTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA19A0D1F7A3946000102A2 /* WRTableView.m */; };
+		BBA1A6121F7CF10C00973672 /* WRCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA1A6111F7CF10C00973672 /* WRCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		BB9BE99D1F453ED7009FA8AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBA19A0C1F7A3946000102A2 /* WRTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRTableView.h; sourceTree = "<group>"; };
 		BBA19A0D1F7A3946000102A2 /* WRTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRTableView.m; sourceTree = "<group>"; };
+		BBA1A6101F7CF10C00973672 /* WRCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCollectionViewCell.h; sourceTree = "<group>"; };
+		BBA1A6111F7CF10C00973672 /* WRCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,8 @@
 				BB9BE98B1F453D7D009FA8AC /* ViewController.m */,
 				560273EC1F7A98C30072A260 /* WRTableViewCell.h */,
 				560273ED1F7A98C30072A260 /* WRTableViewCell.m */,
+				BBA1A6101F7CF10C00973672 /* WRCollectionViewCell.h */,
+				BBA1A6111F7CF10C00973672 /* WRCollectionViewCell.m */,
 				BB0EF4891F7A03BA00CE3846 /* WRFoundation */,
 				BB0EF4771F7A03BA00CE3846 /* WRKit */,
 				BB9BE98D1F453D7D009FA8AC /* Main.storyboard */,
@@ -269,6 +274,7 @@
 				BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */,
 				BB0EF4971F7A03BB00CE3846 /* UITextField+WRContentChanged.m in Sources */,
 				BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */,
+				BBA1A6121F7CF10C00973672 /* WRCollectionViewCell.m in Sources */,
 				BB0EF4951F7A03BB00CE3846 /* UILabel+WRConvenience.m in Sources */,
 				BB0EF4981F7A03BB00CE3846 /* UITextField+WRConvenience.m in Sources */,
 				BB0EF4921F7A03BB00CE3846 /* UIButton+WRExpand.m in Sources */,

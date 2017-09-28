@@ -12,6 +12,20 @@
 static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifier";
 
 #pragma mark -
+/** cell 的对象 */
+@interface WRTableViewCellObject : NSObject
+/** 表视图对象类型 */
+@property (assign, nonatomic) WRTableViewObjectType type;
+/** 标识 */
+@property (copy, nonatomic) NSString *identifier;
+/** cell 类名 */
+@property (copy, nonatomic) NSString *cellClassName;
+/** 高
+ @note 默认44
+ */
+@property (assign, nonatomic) CGFloat height;
+
+@end
 @implementation WRTableViewCellObject
 
 - (instancetype)init {
@@ -24,14 +38,24 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 }
 
 @end
+
 #pragma mark -
+@interface WRTableViewDataSource : NSObject
+/** 对象数组
+ @note 包含 WRTableViewCellObject 实例的数组
+ */
+@property (strong, nonatomic) NSArray <NSArray <WRTableViewCellObject *> *> *objectsArray;
+/** 表视图头视图高度数组 */
+@property (strong, nonatomic) NSArray <NSNumber *>* headerHeightsArray;
+/** 表视图尾视图高度数组 */
+@property (strong, nonatomic) NSArray <NSNumber *>* footerHeightsArray;
+
+@end
 @implementation WRTableViewDataSource
 
 - (instancetype)init {
     if (self = [super init]) {
         self.objectsArray = [NSMutableArray arrayWithCapacity:10];
-        self.tableViewHeaderViewHeight = 0;
-        self.tableViewFooterViewHeight = 0;
     }
     return self;
 }
@@ -39,11 +63,90 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 
 #pragma mark -
 @interface WRTableView () <UITableViewDelegate, UITableViewDataSource>
-
+/** 数据源 */
+@property (strong, nonatomic) WRTableViewDataSource *dataSource;
 @end
 
 @implementation WRTableView
 
+- (instancetype)initSingleSectionSingleCellIdentifier:(NSString *)cellIdentifier
+                                        cellClassName:(nullable NSString *)cellClassName
+                                           cellHeight:(CGFloat)cellHeight
+                                            cellCount:(NSInteger)cellCount {
+    return [[self.class alloc] initSingleSectionSingleCellIdentifier:cellIdentifier
+                                                       cellClassName:cellClassName
+                                                          cellHeight:cellHeight
+                                                           cellCount:cellCount
+                                                        headerHeight:0
+                                                        footerHeight:0];
+    
+}
+- (instancetype)initSingleSectionSingleCellIdentifier:(NSString *)cellIdentifier
+                                        cellClassName:(nullable NSString *)cellClassName
+                                           cellHeight:(CGFloat)cellHeight
+                                            cellCount:(NSInteger)cellCount
+                                         headerHeight:(CGFloat)headerHeight
+                                         footerHeight:(CGFloat)footerHeight {
+    NSMutableArray *identifiersArray = [NSMutableArray arrayWithCapacity:cellCount];
+    NSMutableArray *classNamesArray = [NSMutableArray arrayWithCapacity:cellCount];
+    NSMutableArray *heightsArray = [NSMutableArray arrayWithCapacity:cellCount];
+    for (NSInteger index = 0; index < cellCount; index++) {
+        [identifiersArray addObject:cellIdentifier];
+        [classNamesArray addObject:[NSObject wr_isEmtpty:cellClassName] ? NSStringFromClass(UITableViewCell.class) : cellClassName];
+        [heightsArray addObject:cellHeight == 0 ? @(44) : @(cellHeight)];
+    }
+    return [[self.class alloc] initWithCellIdentifiers:@[identifiersArray]
+                                        cellClassNames:@[classNamesArray]
+                                            cellHeight:@[heightsArray]
+                                         headerHeights:@[@(headerHeight)]
+                                         footerHeights:@[@(footerHeight)]];
+}
+- (instancetype)initMultiSectionSingleCellIdentifier:(NSString *)cellIdentifier
+                                       cellClassName:(nullable NSString *)cellClassName
+                                          cellHeight:(CGFloat)cellHeight
+                                           cellCount:(NSInteger)cellCount
+                                       headerHeights:(nullable NSArray <NSNumber *>*)headerHeights
+                                       footerHeights:(nullable NSArray <NSNumber *>*)footerHeights {
+    NSMutableArray *identifiersArray = [NSMutableArray arrayWithCapacity:cellCount];
+    NSMutableArray *classNamesArray = [NSMutableArray arrayWithCapacity:cellCount];
+    NSMutableArray *heightsArray = [NSMutableArray arrayWithCapacity:cellCount];
+    for (NSInteger index = 0; index < cellCount; index++) {
+        [identifiersArray addObject:cellIdentifier];
+        [classNamesArray addObject:[NSObject wr_isEmtpty:cellClassName] ? NSStringFromClass(UITableViewCell.class) : cellClassName];
+        [heightsArray addObject:cellHeight == 0 ? @(44) : @(cellHeight)];
+    }
+    return [[self.class alloc] initWithCellIdentifiers:@[identifiersArray]
+                                        cellClassNames:@[classNamesArray]
+                                            cellHeight:@[heightsArray]
+                                         headerHeights:headerHeights
+                                         footerHeights:footerHeights];
+}
+- (instancetype)initWithCellIdentifiers:(NSArray <NSArray <NSString *>*>*)cellIdentifiers
+                         cellClassNames:(NSArray <NSArray <NSString *>*>*)cellClassNames
+                             cellHeight:(NSArray <NSArray <NSNumber *>*>*)cellHeights
+                          headerHeights:(nullable NSArray <NSNumber *>*)headerHeights
+                          footerHeights:(nullable NSArray <NSNumber *>*)footerHeights {
+    if (self = [super init]) {
+        WRTableViewDataSource *dataSource = [WRTableViewDataSource new];
+        NSMutableArray *objectsArray = [NSMutableArray arrayWithCapacity:cellIdentifiers.count];
+        for (NSInteger section = 0; section < cellIdentifiers.count; section++) {
+            NSMutableArray *sectionsArray = [NSMutableArray arrayWithCapacity:cellIdentifiers[section].count];
+            for (NSInteger item = 0; item < cellIdentifiers[section].count; item++) {
+                WRTableViewCellObject *cellObject = [WRTableViewCellObject new];
+                cellObject.identifier = cellIdentifiers[section][item];
+                cellObject.cellClassName = cellClassNames[section][item];
+                cellObject.height = cellHeights[section][item].floatValue;
+                [sectionsArray addObject:cellObject];
+            }
+            [objectsArray addObject:sectionsArray];
+        }
+        dataSource.objectsArray = objectsArray;
+        dataSource.headerHeightsArray = headerHeights;
+        dataSource.footerHeightsArray = footerHeights;
+        self.dataSource = dataSource;
+    }
+    return self;
+}
 - (void)didMoveToSuperview {
     if (self.superview != nil) {
         self.tableView.hidden = NO;
@@ -60,10 +163,18 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 }
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return self.dataSource.tableViewHeaderViewHeight <= 0 ? 0.1 : self.dataSource.tableViewHeaderViewHeight;
+    if (section < self.dataSource.headerHeightsArray.count) {
+        CGFloat sectionHeaderheight = self.dataSource.headerHeightsArray[section].floatValue;
+        return sectionHeaderheight <= 0 ? 0.1 : sectionHeaderheight;
+    }
+    return 0.1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return self.dataSource.tableViewFooterViewHeight <= 0 ? 0.1 : self.dataSource.tableViewFooterViewHeight;
+    if (section < self.dataSource.footerHeightsArray.count) {
+        CGFloat sectionFooterheight = self.dataSource.footerHeightsArray[section].floatValue;
+        return sectionFooterheight <= 0 ? 0.1 : sectionFooterheight;
+    }
+    return 0.1;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return nil;
@@ -92,6 +203,9 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         identifier = cellObject.identifier;
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (self.loadedCellBlock) {
+        self.loadedCellBlock(tableView, cell, indexPath);
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,7 +220,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     if (_tableView == nil) {
         UITableView *contentTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView = contentTableView;
-        _tableView.backgroundColor = [UIColor orangeColor];
+        _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
