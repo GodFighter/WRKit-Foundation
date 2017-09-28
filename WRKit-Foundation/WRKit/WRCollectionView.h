@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, WRCollectionViewObjectType) {
 /** 集合视图样式类型 */
 typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
     /** 横向 */
-    WRCollectionViewStyle_Landscape = 0,
+    WRCollectionViewStyle_Landscape = 1,
     /** 竖向 */
     WRCollectionViewStyle_Portrait,
     /** 横向一半 */
@@ -84,6 +84,14 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
  @param footerSizes             尾的尺寸数组，区分section
 */
 - (instancetype)initWithCollectionViewStyle:(WRCollectionViewStyle)collectionViewStyle
+                            cellIdentifiers:(NSArray <NSArray <NSString *>*> *)cellIdentifiers
+                             cellClassNames:(NSArray <NSArray <NSString *>*> *)cellClassNames
+                                  cellSizes:(NSArray <NSArray <NSNumber *>*> *)cellSizes
+                          headerIdentifiers:(nullable NSArray <NSString *> *)headerIdentifiers
+                                headerSizes:(nullable NSArray <NSNumber *> *)headerSizes
+                          footerIdentifiers:(nullable NSArray <NSString *> *)footerIdentifiers
+                                footerSizes:(nullable NSArray <NSNumber *> *)footerSizes;
+- (instancetype)initWithCollectionViewStyles:(NSArray <NSNumber *>*)collectionViewStyles
                             cellIdentifiers:(NSArray <NSArray <NSString *>*> *)cellIdentifiers
                              cellClassNames:(NSArray <NSArray <NSString *>*> *)cellClassNames
                                   cellSizes:(NSArray <NSArray <NSNumber *>*> *)cellSizes

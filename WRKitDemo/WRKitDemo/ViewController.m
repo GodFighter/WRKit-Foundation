@@ -33,7 +33,7 @@
     [self installCollectionView];
 }
 - (void)installCollectionView {
-    WRCollectionView *collectionView = [[WRCollectionView alloc] initSingleSectionMultiCellStyle:WRCollectionViewStyle_Portrait
+    WRCollectionView *collectionView = [[WRCollectionView alloc] initSingleSectionMultiCellStyle:WRCollectionViewStyle_Landscape
                                                                                  cellIdentifiers:@[
                                                                                                    @"cell1",
                                                                                                    @"cell2",
@@ -59,7 +59,7 @@
     
     [self.view addSubview:collectionView];
     collectionView.loadedCellBlock = ^(UICollectionView * _Nonnull collectionView, UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
-//        cell.backgroundColor = [UIColor redColor];
+        cell.backgroundColor = [UIColor redColor];
     };
     collectionView.collectionViewCellDidSelectedBlock = ^(UICollectionView * _Nonnull collectionView, NSIndexPath * _Nonnull indexPath) {
     };
@@ -133,6 +133,9 @@
                               headerHeight:50 footerHeight:30];
     [self.view addSubview:tableView];
     tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    tableView.loadedCellBlock = ^(UITableView * _Nonnull tableView, UITableViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
+        cell.backgroundColor = [UIColor redColor];
+    };
     tableView.tableViewCellDidSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         
     };
