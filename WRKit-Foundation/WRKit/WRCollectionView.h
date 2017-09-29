@@ -41,6 +41,10 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
 @interface WRCollectionView : UIView
 /** 集合视图 */
 @property (strong, nonatomic, readonly) UICollectionView *collectionView;
+/** 显示水平滚动指示 */
+@property (assign, nonatomic) BOOL wr_showsHorizontalScrollIndicator;
+/** 显示垂直滚动指示 */
+@property (assign, nonatomic) BOOL wr_showsVerticalScrollIndicator;
 /** 初始化
  @note 单一section，单一cell样式的集合视图
  */
@@ -120,6 +124,7 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
  @param indexPath 选中索引
  */
 @property (copy, nonatomic) void (^collectionViewCellDidSelectedBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
-
+/** 滚动停止block */
+@property (copy, nonatomic) void (^wr_scrollViewDidEndDeceleratingBlock)(UIScrollView *scrollView);
 NS_ASSUME_NONNULL_END
 @end

@@ -138,6 +138,9 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
 }
 
 - (void)parseDataSource {
+    if (CGRectEqualToRect(self.collectionView.frame, CGRectZero) || ![NSObject wr_isEmtpty:self.attributesArray]) {
+        return;
+    }
     self.attributesArray = [NSMutableArray arrayWithCapacity:10];
 
     UICollectionViewLayoutAttributes *lastAttributes = nil;
@@ -486,6 +489,12 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         self.collectionViewCellDidSelectedBlock(collectionView, indexPath);
     }
 }
+#pragma mark - UIScrollView委托
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.wr_scrollViewDidEndDeceleratingBlock) {
+        self.wr_scrollViewDidEndDeceleratingBlock(scrollView);
+    }
+}
 #pragma mark - 懒加载
 - (UICollectionView *)collectionView {
     if (_collectionView == nil) {
@@ -493,7 +502,9 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        
+        _collectionView.showsHorizontalScrollIndicator = self.wr_showsHorizontalScrollIndicator;
+        _collectionView.showsVerticalScrollIndicator = self.wr_showsVerticalScrollIndicator;
+
         NSMutableSet *cellIdentifierSet = [NSMutableSet setWithCapacity:2];
         NSMutableDictionary *cellClassNameDic = [NSMutableDictionary dictionaryWithCapacity:2];
         
