@@ -72,17 +72,6 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
                                      headerSize:(CGFloat)headerSize
                                footerIdentifier:(nullable NSString *)footerIdentifier
                                      footerSize:(CGFloat)footerSize;
-/** 初始化
- @note 深度定制，每个section的cell可以不用类型
- @param collectionViewStyle     集合视图样式
- @param cellIdentifiers         cell 的标识数组，区分section
- @param cellClassNames          cell 类数组，区分section
- @param cellSizes               cell 的尺寸数组，区分section
- @param headerIdentifiers       头的标识数组，区分section
- @param headerSizes             头的尺寸数组，区分section
- @param footerIdentifiers       尾的标识数组，区分section
- @param footerSizes             尾的尺寸数组，区分section
-*/
 - (instancetype)initWithCollectionViewStyle:(WRCollectionViewStyle)collectionViewStyle
                             cellIdentifiers:(NSArray <NSArray <NSString *>*> *)cellIdentifiers
                              cellClassNames:(NSArray <NSArray <NSString *>*> *)cellClassNames
@@ -91,6 +80,27 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
                                 headerSizes:(nullable NSArray <NSNumber *> *)headerSizes
                           footerIdentifiers:(nullable NSArray <NSString *> *)footerIdentifiers
                                 footerSizes:(nullable NSArray <NSNumber *> *)footerSizes;
+
+- (instancetype)initWithCollectionViewStyles:(NSArray <NSNumber *>*)collectionViewStyles
+                             cellIdentifiers:(NSArray <NSString *> *)cellIdentifiers
+                              cellClassNames:(NSArray <NSString *> *)cellClassNames
+                                   cellSizes:(NSArray <NSNumber *> *)cellSizes
+                                  cellCounts:(NSArray <NSNumber *> *)cellCounts
+                           headerIdentifiers:(nullable NSArray <NSString *> *)headerIdentifiers
+                                 headerSizes:(nullable NSArray <NSNumber *> *)headerSizes
+                           footerIdentifiers:(nullable NSArray <NSString *> *)footerIdentifiers
+                                 footerSizes:(nullable NSArray <NSNumber *> *)footerSizes;
+/** 初始化
+ @note 深度定制，每个section的cell可以不用类型
+ @param collectionViewStyles     集合视图样式数组
+ @param cellIdentifiers         cell 的标识数组，区分section
+ @param cellClassNames          cell 类数组，区分section
+ @param cellSizes               cell 的尺寸数组，区分section
+ @param headerIdentifiers       头的标识数组，区分section
+ @param headerSizes             头的尺寸数组，区分section
+ @param footerIdentifiers       尾的标识数组，区分section
+ @param footerSizes             尾的尺寸数组，区分section
+ */
 - (instancetype)initWithCollectionViewStyles:(NSArray <NSNumber *>*)collectionViewStyles
                             cellIdentifiers:(NSArray <NSArray <NSString *>*> *)cellIdentifiers
                              cellClassNames:(NSArray <NSArray <NSString *>*> *)cellClassNames

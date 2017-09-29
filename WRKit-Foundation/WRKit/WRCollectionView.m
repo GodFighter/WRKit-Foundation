@@ -358,6 +358,44 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
     return self;
 }
 - (instancetype)initWithCollectionViewStyles:(NSArray <NSNumber *>*)collectionViewStyles
+                             cellIdentifiers:(NSArray <NSString *> *)cellIdentifiers
+                              cellClassNames:(NSArray <NSString *> *)cellClassNames
+                                   cellSizes:(NSArray <NSNumber *> *)cellSizes
+                                  cellCounts:(NSArray <NSNumber *> *)cellCounts
+                           headerIdentifiers:(nullable NSArray <NSString *> *)headerIdentifiers
+                                 headerSizes:(nullable NSArray <NSNumber *> *)headerSizes
+                           footerIdentifiers:(nullable NSArray <NSString *> *)footerIdentifiers
+                                 footerSizes:(nullable NSArray <NSNumber *> *)footerSizes {
+    NSMutableArray *cellIdentifiersArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *cellClassNamesArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *cellSizesArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    for (NSInteger section = 0; section < cellCounts.count; section++) {
+        NSInteger sectionCellCount = cellCounts[section].integerValue;
+        
+        NSMutableArray *sectionIdentifiersArray = [NSMutableArray arrayWithCapacity:sectionCellCount];
+        NSMutableArray *sectionClassNamesArray = [NSMutableArray arrayWithCapacity:sectionCellCount];
+        NSMutableArray *sectionSizesArray = [NSMutableArray arrayWithCapacity:sectionCellCount];
+
+        for (NSInteger item = 0; item < sectionCellCount; item++) {
+            [sectionIdentifiersArray addObject:cellIdentifiers[section]];
+            [sectionClassNamesArray addObject:cellClassNames[section]];
+            [sectionSizesArray addObject:cellSizes[section]];
+        }
+        [cellIdentifiersArray addObject:sectionIdentifiersArray];
+        [cellClassNamesArray addObject:sectionClassNamesArray];
+        [cellSizesArray addObject:sectionSizesArray];
+
+    }
+    return [[self.class alloc] initWithCollectionViewStyles:collectionViewStyles
+                                            cellIdentifiers:cellIdentifiersArray
+                                             cellClassNames:cellClassNamesArray
+                                                  cellSizes:cellSizesArray
+                                          headerIdentifiers:headerIdentifiers
+                                                headerSizes:headerSizes
+                                          footerIdentifiers:footerIdentifiers
+                                                footerSizes:footerSizes];
+}
+- (instancetype)initWithCollectionViewStyles:(NSArray <NSNumber *>*)collectionViewStyles
                              cellIdentifiers:(NSArray <NSArray <NSString *>*> *)cellIdentifiers
                               cellClassNames:(NSArray <NSArray <NSString *>*> *)cellClassNames
                                    cellSizes:(NSArray <NSArray <NSNumber *>*> *)cellSizes

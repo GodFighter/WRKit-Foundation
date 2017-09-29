@@ -33,30 +33,65 @@
     [self installCollectionView];
 }
 - (void)installCollectionView {
-    WRCollectionView *collectionView = [[WRCollectionView alloc] initSingleSectionMultiCellStyle:WRCollectionViewStyle_Landscape
-                                                                                 cellIdentifiers:@[
-                                                                                                   @"cell1",
-                                                                                                   @"cell2",
-                                                                                                   @"cell3",
-                                                                                                   @"cell4"
-                                                                                                   ]
-                                                                                  cellClassNames:@[
-                                                                                                 NSStringFromClass(WRCollectionViewCell.class),
-                                                                                                 NSStringFromClass(UICollectionViewCell.class),
-                                                                                                 NSStringFromClass(UICollectionViewCell.class),
-                                                                                                 NSStringFromClass(UICollectionViewCell.class),
-                                                                                                 ]
-                                                                                       cellSizes:@[
-                                                                                                   @(50),
-                                                                                                   @(100),
-                                                                                                   @(30),
-                                                                                                   @(50)
-                                                                                                   ]
-                                                                                headerIdentifier:@"header"
-                                                                                      headerSize:50
-                                                                                footerIdentifier:@"footer"
-                                                                                      footerSize:50];
-    
+//    WRCollectionView *collectionView = [[WRCollectionView alloc] initSingleSectionMultiCellStyle:WRCollectionViewStyle_Landscape
+//                                                                                 cellIdentifiers:@[
+//                                                                                                   @"cell1",
+//                                                                                                   @"cell2",
+//                                                                                                   @"cell3",
+//                                                                                                   @"cell4"
+//                                                                                                   ]
+//                                                                                  cellClassNames:@[
+//                                                                                                 NSStringFromClass(WRCollectionViewCell.class),
+//                                                                                                 NSStringFromClass(UICollectionViewCell.class),
+//                                                                                                 NSStringFromClass(UICollectionViewCell.class),
+//                                                                                                 NSStringFromClass(UICollectionViewCell.class),
+//                                                                                                 ]
+//                                                                                       cellSizes:@[
+//                                                                                                   @(50),
+//                                                                                                   @(100),
+//                                                                                                   @(30),
+//                                                                                                   @(50)
+//                                                                                                   ]
+//                                                                                headerIdentifier:@"header"
+//                                                                                      headerSize:50
+//                                                                                footerIdentifier:@"footer"
+//                                                                                      footerSize:50];
+    WRCollectionView *collectionView = [[WRCollectionView alloc] initWithCollectionViewStyles:@[
+                                                                                                @(WRCollectionViewStyle_LandscapeHalf),
+                                                                                                @(WRCollectionViewStyle_Landscape)
+                                                                                                ]
+                                                                              cellIdentifiers:@[
+                                                                                                @"cell1",
+                                                                                                @"cell2"
+                                                                                                ]
+                                                                               cellClassNames:@[
+                                                                                                NSStringFromClass(WRCollectionViewCell.class),
+                                                                                                NSStringFromClass(WRCollectionViewCell.class)
+                                                                                                ]
+                                                                                    cellSizes:@[
+                                                                                                @(60),
+                                                                                                @90
+                                                                                                ]
+                                                                                   cellCounts:@[
+                                                                                                @4,
+                                                                                                @3
+                                                                                                ]
+                                                                            headerIdentifiers:@[
+                                                                                                @"header",
+                                                                                                @"header"
+                                                                                                ]
+                                                                                  headerSizes:@[
+                                                                                                @(50),
+                                                                                                @(50)
+                                                                                                ]
+                                                                            footerIdentifiers:@[
+                                                                                                @"footer",
+                                                                                                @"footer"
+                                                                                                ]
+                                                                                  footerSizes:@[
+                                                                                                @(50),
+                                                                                                @(50)
+                                                                                                ]];
     [self.view addSubview:collectionView];
     collectionView.loadedCellBlock = ^(UICollectionView * _Nonnull collectionView, UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
         cell.backgroundColor = [UIColor redColor];
