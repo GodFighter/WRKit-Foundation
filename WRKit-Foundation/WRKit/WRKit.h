@@ -14,6 +14,7 @@
 #import "UIImage+WRConvenience.h"
 #import "UIButton+WRConvenience.h"
 #import "UITextField+WRConvenience.h"
+#import "UILabel+WRConvenience.h"
 
 #import "UILabel+WRSize.h"
 
