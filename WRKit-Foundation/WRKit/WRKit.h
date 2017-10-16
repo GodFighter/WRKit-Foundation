@@ -22,5 +22,6 @@
 
 #import "WRTableView.h"
 #import "WRCollectionView.h"
+#import "WRMongolianLabel.h"
 
 #endif /* WRKit_h */

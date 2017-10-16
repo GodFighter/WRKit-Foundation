@@ -22,6 +22,9 @@
 		BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */; };
 		BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0EF4B81F7A2E5500CE3846 /* NSObject+WRUserDefaults.m */; };
 		BB1493391F945B9200DDC429 /* WRMongolianLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1493381F945B9200DDC429 /* WRMongolianLabel.m */; };
+		BB14933C1F948B9200DDC429 /* WRMongolianContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB14933B1F948B9200DDC429 /* WRMongolianContainer.m */; };
+		BB14933F1F948C2A00DDC429 /* WRLine.m in Sources */ = {isa = PBXBuildFile; fileRef = BB14933E1F948C2A00DDC429 /* WRLine.m */; };
+		BB1493411F94A04500DDC429 /* mnglbaizhengaat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB1493401F94A04500DDC429 /* mnglbaizhengaat.ttf */; };
 		BB161E681F7B8C4D005B73C7 /* WRCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */; };
 		BB9BE9861F453D7D009FA8AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9851F453D7D009FA8AC /* main.m */; };
 		BB9BE9891F453D7D009FA8AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9881F453D7D009FA8AC /* AppDelegate.m */; };
@@ -67,6 +70,11 @@
 		BB0EF4B81F7A2E5500CE3846 /* NSObject+WRUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WRUserDefaults.m"; sourceTree = "<group>"; };
 		BB1493371F945B9200DDC429 /* WRMongolianLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRMongolianLabel.h; sourceTree = "<group>"; };
 		BB1493381F945B9200DDC429 /* WRMongolianLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRMongolianLabel.m; sourceTree = "<group>"; };
+		BB14933A1F948B9200DDC429 /* WRMongolianContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRMongolianContainer.h; sourceTree = "<group>"; };
+		BB14933B1F948B9200DDC429 /* WRMongolianContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRMongolianContainer.m; sourceTree = "<group>"; };
+		BB14933D1F948C2A00DDC429 /* WRLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRLine.h; sourceTree = "<group>"; };
+		BB14933E1F948C2A00DDC429 /* WRLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRLine.m; sourceTree = "<group>"; };
+		BB1493401F94A04500DDC429 /* mnglbaizhengaat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mnglbaizhengaat.ttf; sourceTree = "<group>"; };
 		BB161E661F7B8C4D005B73C7 /* WRCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCollectionView.h; sourceTree = "<group>"; };
 		BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCollectionView.m; sourceTree = "<group>"; };
 		BB9BE9811F453D7D009FA8AC /* WRKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WRKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +160,10 @@
 			children = (
 				BB1493371F945B9200DDC429 /* WRMongolianLabel.h */,
 				BB1493381F945B9200DDC429 /* WRMongolianLabel.m */,
+				BB14933A1F948B9200DDC429 /* WRMongolianContainer.h */,
+				BB14933B1F948B9200DDC429 /* WRMongolianContainer.m */,
+				BB14933D1F948C2A00DDC429 /* WRLine.h */,
+				BB14933E1F948C2A00DDC429 /* WRLine.m */,
 			);
 			path = CoreText;
 			sourceTree = "<group>";
@@ -198,6 +210,7 @@
 		BB9BE9841F453D7D009FA8AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB1493401F94A04500DDC429 /* mnglbaizhengaat.ttf */,
 				BB9BE9851F453D7D009FA8AC /* main.m */,
 			);
 			name = "Supporting Files";
@@ -272,6 +285,7 @@
 				BB9BE9941F453D7D009FA8AC /* LaunchScreen.storyboard in Resources */,
 				BB9BE9911F453D7D009FA8AC /* Assets.xcassets in Resources */,
 				BB9BE98F1F453D7D009FA8AC /* Main.storyboard in Resources */,
+				BB1493411F94A04500DDC429 /* mnglbaizhengaat.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +299,7 @@
 				BB0EF49B1F7A03BB00CE3846 /* NSString+WRJudge.m in Sources */,
 				BBA19A0E1F7A3946000102A2 /* WRTableView.m in Sources */,
 				BB1493391F945B9200DDC429 /* WRMongolianLabel.m in Sources */,
+				BB14933C1F948B9200DDC429 /* WRMongolianContainer.m in Sources */,
 				BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */,
 				BB0EF4971F7A03BB00CE3846 /* UITextField+WRContentChanged.m in Sources */,
 				BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */,
@@ -302,6 +317,7 @@
 				BB0EF4931F7A03BB00CE3846 /* UIControl+WRBlocks.m in Sources */,
 				BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */,
 				BB9BE9861F453D7D009FA8AC /* main.m in Sources */,
+				BB14933F1F948C2A00DDC429 /* WRLine.m in Sources */,
 				BB0EF4941F7A03BB00CE3846 /* UIImage+WRConvenience.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

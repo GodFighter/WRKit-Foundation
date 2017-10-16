@@ -26,11 +26,28 @@
     NSLog(@"%d",string.wr_isPhoneNumber);
     ;
     NSLog(@"%ld==%ld==%ld",(long)[NSDate date].day, (long)[NSDate date].month, (long)[NSDate date].weekday);
-    
-    self.view.backgroundColor = [UIColor redColor];
-    
+        
 //    [self installTableView];
-    [self installCollectionView];
+//    [self installCollectionView];
+    [self installMongolianLabel];
+}
+- (void)installMongolianLabel {
+    WRMongolianLabel *label = [WRMongolianLabel new];
+    label.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+    label.frame = CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 200);
+    
+    label.text = @"ᠪᠠᠭᠰᠢᠨᠠᠷ ᠤᠨ ᠮᠡᠳᠡᠭᠡ ᠵᠠᠩᠭᠢ ᠶᠢᠨ ᠲᠧᠭᠨᠢᠭ ᠤᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ ᠤ ᠴᠢᠳᠠᠪᠤᠷᠢ ᠶᠢ ᠳᠡᠭᠡᠭᠰᠢᠯᠡᠭᠦᠯᠵᠤ᠂ ᠮᠡᠳᠡᠭᠡ ᠵᠠᠩᠭᠢ ᠮᠡᠷᠭᠡᠵᠢᠯ  ᠤᠨ ᠦᠢᠯᠡᠳᠦᠯ ᠢ ᠰᠤᠷᠭᠠᠨ ᠬᠦᠮᠦᠵᠢᠯ ᠤᠨ ᠬᠦᠭᠵᠢᠯᠲᠡ ᠳ᠋ᠤ ᠭᠦᠢᠴᠡᠳ ᠪᠠᠳᠠᠷᠠᠭᠤᠯᠬᠤ ᠶᠢᠨ ᠲᠦᠯᠦᠭᠡ ᠦᠪᠡᠷᠲᠡᠭᠡᠨ ᠵᠠᠰᠠᠬᠤ ᠣᠷᠤᠨ ᠤ ᠰᠤᠷᠭᠠᠨ ᠬᠦᠮᠦᠵᠢᠯ ᠤᠨ ᠲᠢᠩᠬᠢᠮ ᠭᠣᠯᠯᠠᠨ ᠡᠷᠬᠢᠯᠡᠵᠤ᠂ ᠲᠦᠩᠯᠢᠶᠣᠣ ᠬᠣᠲᠠ ᠶᠢᠨ ᠰᠤᠷᠭᠠᠨ ᠬᠦᠮᠦᠵᠢᠯ ᠤᠨ ᠲᠣᠪᠴᠢᠶ᠎ᠠ 《ᠪᠦᠬᠦ ᠣᠷᠤᠨ ᠤ ᠮᠤᠩᠭ᠋ᠤᠯ ᠢᠶᠡᠷ ᠬᠢᠴᠢᠶᠡᠯᠯᠡᠬᠦ ᠳᠤᠮᠳᠠᠳᠤ ᠰᠤᠷᠭᠠᠭᠤᠯᠢ ᠶᠢᠨ ᠪᠠᠢᠭᠠᠯᠢ ᠶᠢᠨ ᠬᠢᠴᠢᠶᠡᠯ ᠲᠦᠷᠥᠯ ᠤᠨ ᠪᠠᠭᠰᠢ ᠶᠢᠨ ᠮᠡᠳᠡᠭᠡ ᠵᠠᠩᠭᠢ ᠶᠢᠨ ᠲᠧᠭᠨᠢᠭ ᠤᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ ᠤ ᠴᠢᠳᠠᠪᠤᠷᠢ ᠶᠢᠨ ᠪᠣᠯᠪᠠᠰᠤᠷᠠᠯ》 ᠢ ᠢ ᠦᠪᠡᠷᠲᠡᠭᠡᠨ ᠵᠠᠰᠠᠬᠤ ᠣᠷᠤᠨ ᠤ ᠵᠢᠭᠠᠨ ᠰᠤᠷᠭᠠᠬᠤ ᠲᠠᠰᠤᠭ ᠤᠨ ᠡᠷᠬᠢᠯᠡᠭᠴᠢ ᠪᠢᠯᠢᠭᠲᠦ ᠪᠠᠭᠰᠢ ᠡᠷᠬᠢᠯᠡᠨ᠂ ᠦᠨᠳᠦᠰᠦᠲᠡᠨ ᠤ ᠰᠤᠷᠭᠠᠨ ᠬᠦᠮᠦᠵᠢᠯ ᠳ᠋ᠤ ᠣᠷᠤᠰᠢᠵᠤ ᠪᠠᠢᠭ᠎ᠠ ᠠᠰᠠᠭᠤᠳᠠᠯ ᠵᠢᠴᠢ ᠬᠦᠭᠵᠢᠯᠲᠡ ᠶᠢᠨ ᠬᠠᠨᠳᠤᠰᠢ ᠶᠢᠨ ᠲᠤᠬᠠᠢ ᠨᠠᠷᠢᠨ ᠲᠠᠨᠢᠯᠴᠠᠭᠤᠯᠤᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ᠃ ᠦᠪᠡᠷᠲᠡᠭᠡᠨ ᠵᠠᠰᠠᠬᠤ ᠣᠷᠤᠨ ᠤ ᠰᠤᠷᠭᠠᠨ ᠬᠦᠮᠦᠵᠢᠯ ᠤᠨ ᠲᠢᠩᠬᠢᠮ ᠤᠨ ᠦᠨᠳᠦᠰᠦᠲᠡᠨ ᠤ ᠰᠤᠷᠭᠠᠨ ᠬᠦᠮᠦᠵᠢᠯ ᠤᠨ ᠪᠠᠢᠴᠠᠭᠠᠨ ᠰᠤᠳᠤᠯᠤᠭᠴᠢ ᠪᠤᠶᠠᠨᠲᠣᠭᠲᠠᠬᠤ ᠪᠠᠭᠰᠢ ᠡᠴᠡ ᠦᠨᠳᠦᠰᠦᠲᠡᠨ ᠤ ᠰᠤᠷᠭᠠᠨ ᠬᠦᠮᠦᠵᠢᠯ ᠤᠨ ᠦᠢᠯᠡᠰ ᠤᠨ ᠲᠡᠦᠬᠡᠨ ᠶᠠᠪᠤᠴᠠ ᠪᠠ ᠢᠷᠡᠭᠡᠳᠦᠢ ᠶᠢᠨ ᠬᠦᠭᠵᠢᠯᠲᠡ ᠲᠤᠬᠠᠢ ᠪᠦᠬᠦ ᠲᠠᠯ᠎ᠠ ᠪᠡᠷ ᠬᠠᠷᠢᠭᠤ ᠮᠡᠳᠡᠭᠦᠯᠦᠯᠲᠡ ᠬᠢᠭᠰᠡᠨ ᠪᠠᠢᠨ᠎ᠠ᠃ ᠦᠪᠡᠷᠲᠡᠭᠡᠨ ᠵᠠᠰᠠᠬᠤ ᠣᠷᠤᠨ ᠤ ᠵᠢᠭᠠᠨ ";
+    [self.view addSubview:label];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"按钮" forState:UIControlStateNormal];
+    button.frame = CGRectMake(100, 400, 100, 50);
+    button.backgroundColor = [UIColor redColor];
+    [button wr_addEventHandler:^(id sender) {
+//        label.font =[UIFont fontWithName:@"MongolianBaiZheng" size:18];
+        label.lineSpacing = 10;
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
 - (void)installCollectionView {
 //    WRCollectionView *collectionView = [[WRCollectionView alloc] initSingleSectionMultiCellStyle:WRCollectionViewStyle_Landscape
