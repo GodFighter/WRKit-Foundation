@@ -120,6 +120,7 @@
 				BBA19A0D1F7A3946000102A2 /* WRTableView.m */,
 				BB161E661F7B8C4D005B73C7 /* WRCollectionView.h */,
 				BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */,
+				BB1493361F9455FB00DDC429 /* CoreText */,
 				BB0EF4881F7A03BA00CE3846 /* WRKit.h */,
 			);
 			name = WRKit;
@@ -141,6 +142,13 @@
 			);
 			name = WRFoundation;
 			path = "../../WRKit-Foundation/WRFoundation";
+			sourceTree = "<group>";
+		};
+		BB1493361F9455FB00DDC429 /* CoreText */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreText;
 			sourceTree = "<group>";
 		};
 		BB9BE9781F453D7D009FA8AC = {
