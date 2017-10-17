@@ -104,16 +104,25 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 - (instancetype)initMultiSectionSingleCellIdentifier:(NSString *)cellIdentifier
                                        cellClassName:(nullable NSString *)cellClassName
                                           cellHeight:(CGFloat)cellHeight
-                                           cellCount:(NSInteger)cellCount
+                                           cellCount:(NSArray <NSNumber *> *)cellCounts
                                        headerHeights:(nullable NSArray <NSNumber *>*)headerHeights
                                        footerHeights:(nullable NSArray <NSNumber *>*)footerHeights {
-    NSMutableArray *identifiersArray = [NSMutableArray arrayWithCapacity:cellCount];
-    NSMutableArray *classNamesArray = [NSMutableArray arrayWithCapacity:cellCount];
-    NSMutableArray *heightsArray = [NSMutableArray arrayWithCapacity:cellCount];
-    for (NSInteger index = 0; index < cellCount; index++) {
-        [identifiersArray addObject:cellIdentifier];
-        [classNamesArray addObject:[NSObject wr_isEmtpty:cellClassName] ? NSStringFromClass(UITableViewCell.class) : cellClassName];
-        [heightsArray addObject:cellHeight == 0 ? @(44) : @(cellHeight)];
+    NSMutableArray *identifiersArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *classNamesArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *heightsArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    
+    for (NSInteger section = 0; section < cellCounts.count; section++) {
+        NSMutableArray *sectionIdentifiers = [NSMutableArray arrayWithCapacity:1];
+        NSMutableArray *sectionClassNames = [NSMutableArray arrayWithCapacity:1];
+        NSMutableArray *sectionHeights = [NSMutableArray arrayWithCapacity:1];
+        for (NSInteger index = 0; index < cellCounts[section].integerValue; index++) {
+            [sectionIdentifiers addObject:cellIdentifier];
+            [sectionClassNames addObject:[NSObject wr_isEmtpty:cellClassName] ? NSStringFromClass(UITableViewCell.class) : cellClassName];
+            [sectionHeights addObject:cellHeight == 0 ? @(44) : @(cellHeight)];
+        }
+        [identifiersArray addObject:sectionIdentifiers];
+        [classNamesArray addObject:sectionClassNames];
+        [heightsArray addObject:sectionHeights];
     }
     return [[self.class alloc] initWithCellIdentifiers:@[identifiersArray]
                                         cellClassNames:@[classNamesArray]

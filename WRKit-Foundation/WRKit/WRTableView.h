@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
 - (instancetype)initMultiSectionSingleCellIdentifier:(NSString *)cellIdentifier
                                        cellClassName:(nullable NSString *)cellClassName
                                           cellHeight:(CGFloat)cellHeight
-                                           cellCount:(NSInteger)cellCount
+                                           cellCount:(NSArray <NSNumber *> *)cellCounts
                                        headerHeights:(nullable NSArray <NSNumber *>*)headerHeights
                                        footerHeights:(nullable NSArray <NSNumber *>*)footerHeights;
 
