@@ -124,9 +124,9 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         [classNamesArray addObject:sectionClassNames];
         [heightsArray addObject:sectionHeights];
     }
-    return [[self.class alloc] initWithCellIdentifiers:@[identifiersArray]
-                                        cellClassNames:@[classNamesArray]
-                                            cellHeight:@[heightsArray]
+    return [[self.class alloc] initWithCellIdentifiers:identifiersArray
+                                        cellClassNames:classNamesArray
+                                            cellHeight:heightsArray
                                          headerHeights:headerHeights
                                          footerHeights:footerHeights];
 }
@@ -170,6 +170,22 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     WRTableViewCellObject *cellObject = sectionArray[indexPath.item];
     return cellObject;
 }
+- (void)setHeaderViewIdentifier:(NSArray<NSString *> *)headerViewIdentifier {
+    _headerViewIdentifier = headerViewIdentifier;
+    if (_headerViewIdentifier.count == self.headerViewClassName.count) {
+        for (NSInteger i = 0; i < headerViewIdentifier.count; i++) {
+            [_tableView registerClass:NSClassFromString(self.headerViewClassName[i]) forHeaderFooterViewReuseIdentifier:_headerViewIdentifier[i]];
+        }
+    }
+}
+- (void)setHeaderViewClassName:(NSArray<NSString *> *)headerViewClassName {
+    _headerViewClassName = headerViewClassName;
+    if (_headerViewClassName.count == self.headerViewIdentifier.count) {
+        for (NSInteger i = 0; i < _headerViewClassName.count; i++) {
+            [_tableView registerClass:NSClassFromString(_headerViewClassName[i]) forHeaderFooterViewReuseIdentifier:self.headerViewIdentifier[i]];
+        }
+    }
+}
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section < self.dataSource.headerHeightsArray.count) {
@@ -186,6 +202,13 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     return 0.1;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (self.headerViewIdentifier.count > section) {
+        UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.headerViewIdentifier[section]];
+        if (self.loadedHeaderBlock) {
+            self.loadedHeaderBlock(tableView, view, section);
+        }
+        return view;
+    }
     return nil;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

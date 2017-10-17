@@ -23,12 +23,18 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
 @interface WRTableView : UIView
 /** 表视图 */
 @property (strong, nonatomic) UITableView *tableView;
+/** 头尾视图参数，不设置则为nil */
+@property (strong, nonatomic) NSArray <NSString *>*headerViewIdentifier;
+@property (strong, nonatomic) NSArray <NSString *>*headerViewClassName;
+@property (strong, nonatomic) NSArray <NSString *>*footerViewIdentifier;
+@property (strong, nonatomic) NSArray <NSString *>*footerViewClassName;
 /** 加载cell block
  @param tableView 表合视图
  @param cell cell
  @param indexPath 索引
  */
 @property (copy, nonatomic) void (^loadedCellBlock)(UITableView *tableView, UITableViewCell *cell, NSIndexPath *indexPath);
+@property (copy, nonatomic) void (^loadedHeaderBlock)(UITableView *tableView, UITableViewHeaderFooterView *header, NSInteger section);
 /** 表视图选中回调block
  @param tableView 表试图
  @param indexPath 选中索引
