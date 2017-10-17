@@ -186,6 +186,22 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         }
     }
 }
+- (void)setFooterViewIdentifier:(NSArray<NSString *> *)footerViewIdentifier {
+    _footerViewIdentifier = footerViewIdentifier;
+    if (_footerViewIdentifier.count == self.footerViewClassName.count) {
+        for (NSInteger i = 0; i < _footerViewIdentifier.count; i++) {
+            [_tableView registerClass:NSClassFromString(self.footerViewClassName[i]) forHeaderFooterViewReuseIdentifier:self.footerViewIdentifier[i]];
+        }
+    }
+}
+- (void)setFooterViewClassName:(NSArray<NSString *> *)footerViewClassName {
+    _footerViewClassName = footerViewClassName;
+    if (_footerViewClassName.count == self.footerViewIdentifier.count) {
+        for (NSInteger i = 0; i < _footerViewClassName.count; i++) {
+            [_tableView registerClass:NSClassFromString(_footerViewClassName[i]) forHeaderFooterViewReuseIdentifier:self.footerViewIdentifier[i]];
+        }
+    }
+}
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section < self.dataSource.headerHeightsArray.count) {
@@ -212,6 +228,13 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     return nil;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (self.footerViewIdentifier.count > section) {
+        UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.footerViewIdentifier[section]];
+        if (self.loadedFooterBlock) {
+            self.loadedFooterBlock(tableView, view, section);
+        }
+        return view;
+    }
     return nil;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

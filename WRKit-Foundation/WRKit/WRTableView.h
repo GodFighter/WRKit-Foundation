@@ -34,7 +34,18 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
  @param indexPath 索引
  */
 @property (copy, nonatomic) void (^loadedCellBlock)(UITableView *tableView, UITableViewCell *cell, NSIndexPath *indexPath);
+/** 加载header block
+ @param tableView 表合视图
+ @param header header
+ @param section 区
+ */
 @property (copy, nonatomic) void (^loadedHeaderBlock)(UITableView *tableView, UITableViewHeaderFooterView *header, NSInteger section);
+/** 加载footer block
+ @param tableView 表合视图
+ @param footer footer
+ @param section 区
+ */
+@property (copy, nonatomic) void (^loadedFooterBlock)(UITableView *tableView, UITableViewHeaderFooterView *footer, NSInteger section);
 /** 表视图选中回调block
  @param tableView 表试图
  @param indexPath 选中索引
