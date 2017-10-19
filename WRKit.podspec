@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "WRKit"
-    s.version      = "1.2.4"
+    s.version      = "1.2.5"
     s.summary      = "kit & funcation的便利构造方法."
     s.description  = "kit & funcation的便利构造方法，常用视图的便利构造，常用的判断方法."
     s.homepage     = "https://github.com/GodFighter/WRKit-Foundation.git"

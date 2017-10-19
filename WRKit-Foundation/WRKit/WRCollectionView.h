@@ -70,7 +70,7 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
  */
 - (instancetype)initSingleSectionMultiCellStyle:(WRCollectionViewStyle)collectionViewStyle
                                 cellIdentifiers:(NSArray <NSString *> *)cellIdentifiers
-                                  cellClassNames:(NSArray <NSString *> *)cellClassNames
+                                 cellClassNames:(NSArray <NSString *> *)cellClassNames
                                       cellSizes:(NSArray <NSNumber *> *)cellSizes
                                headerIdentifier:(nullable NSString *)headerIdentifier
                                      headerSize:(CGFloat)headerSize
@@ -94,6 +94,17 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
                                  headerSizes:(nullable NSArray <NSNumber *> *)headerSizes
                            footerIdentifiers:(nullable NSArray <NSString *> *)footerIdentifiers
                                  footerSizes:(nullable NSArray <NSNumber *> *)footerSizes;
+/** 多个section同一个cell的 */
+- (instancetype)initWithMultiSectionsSingleCellStyle:(WRCollectionViewStyle)collectionViewStyle
+                                      cellIdentifier:(NSString *)cellIdentifier
+                                       cellClassName:(NSString *)cellClassName
+                                            cellSize:(CGFloat)cellSize
+                                           cellCount:(NSArray <NSNumber *> * )cellCounts
+                                    headerIdentifier:(nullable NSString *)headerIdentifier
+                                          headerSize:(CGFloat)headerSize
+                                    footerIdentifier:(nullable NSString *)footerIdentifier
+                                          footerSize:(CGFloat)footerSize;
+
 /** 初始化
  @note 深度定制，每个section的cell可以不用类型
  @param collectionViewStyles     集合视图样式数组
@@ -106,13 +117,13 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
  @param footerSizes             尾的尺寸数组，区分section
  */
 - (instancetype)initWithCollectionViewStyles:(NSArray <NSNumber *>*)collectionViewStyles
-                            cellIdentifiers:(NSArray <NSArray <NSString *>*> *)cellIdentifiers
-                             cellClassNames:(NSArray <NSArray <NSString *>*> *)cellClassNames
-                                  cellSizes:(NSArray <NSArray <NSNumber *>*> *)cellSizes
-                          headerIdentifiers:(nullable NSArray <NSString *> *)headerIdentifiers
-                                headerSizes:(nullable NSArray <NSNumber *> *)headerSizes
-                          footerIdentifiers:(nullable NSArray <NSString *> *)footerIdentifiers
-                                footerSizes:(nullable NSArray <NSNumber *> *)footerSizes;
+                             cellIdentifiers:(NSArray <NSArray <NSString *>*> *)cellIdentifiers
+                              cellClassNames:(NSArray <NSArray <NSString *>*> *)cellClassNames
+                                   cellSizes:(NSArray <NSArray <NSNumber *>*> *)cellSizes
+                           headerIdentifiers:(nullable NSArray <NSString *> *)headerIdentifiers
+                                 headerSizes:(nullable NSArray <NSNumber *> *)headerSizes
+                           footerIdentifiers:(nullable NSArray <NSString *> *)footerIdentifiers
+                                 footerSizes:(nullable NSArray <NSNumber *> *)footerSizes;
 /** 加载cell block
  @param collectionView 集合视图
  @param cell cell
@@ -128,3 +139,4 @@ typedef NS_ENUM(NSInteger, WRCollectionViewStyle) {
 @property (copy, nonatomic) void (^wr_scrollViewDidEndDeceleratingBlock)(UIScrollView *scrollView);
 NS_ASSUME_NONNULL_END
 @end
+

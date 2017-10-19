@@ -142,7 +142,7 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         return;
     }
     self.attributesArray = [NSMutableArray arrayWithCapacity:10];
-
+    
     UICollectionViewLayoutAttributes *lastAttributes = nil;
     for (NSInteger section = 0; section < self.dataSourcesArray.count; section++) {
         WRCollectionViewDataSource *dataSource = self.dataSourcesArray[section];
@@ -155,9 +155,9 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
                 case WRCollectionViewObjectType_Header: {
                     frame = [self attributesWithCollectionViewObject:object
                                                           dataSource:dataSource
-                                                     lastAttributes:lastAttributes
-                                                          indexPath:[NSIndexPath indexPathWithIndex:section]];
-
+                                                      lastAttributes:lastAttributes
+                                                           indexPath:[NSIndexPath indexPathWithIndex:section]];
+                    
                     UICollectionViewLayoutAttributes *header = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader withIndexPath:[NSIndexPath indexPathWithIndex:section]];
                     header.frame = frame;
                     lastAttributes = header;
@@ -167,9 +167,9 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
                 case WRCollectionViewObjectType_Footer: {
                     frame = [self attributesWithCollectionViewObject:object
                                                           dataSource:dataSource
-                                                     lastAttributes:lastAttributes
+                                                      lastAttributes:lastAttributes
                                                            indexPath:[NSIndexPath indexPathWithIndex:section]];
-
+                    
                     UICollectionViewLayoutAttributes *footer = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter withIndexPath:[NSIndexPath indexPathWithIndex:section]];
                     footer.frame = frame;
                     lastAttributes = footer;
@@ -182,7 +182,7 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
                                                           dataSource:dataSource
                                                       lastAttributes:lastAttributes
                                                            indexPath:[NSIndexPath indexPathForRow:index inSection:section]];
-
+                    
                     UICollectionViewLayoutAttributes *cell = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForRow:index inSection:section]];
                     cell.frame = frame;
                     lastAttributes = cell;
@@ -278,7 +278,7 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
     NSMutableArray *cellIdentifirtsArray = [NSMutableArray arrayWithCapacity:cellCount];
     NSMutableArray *cellClassNamesArray = [NSMutableArray arrayWithCapacity:cellCount];
     NSMutableArray *cellSizesArray = [NSMutableArray arrayWithCapacity:cellCount];
-
+    
     for (NSInteger i = 0; i < cellCount; i++) {
         [cellIdentifirtsArray addObject:cellIdentifier];
         [cellClassNamesArray addObject:cellClassName];
@@ -286,12 +286,12 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
     }
     return [[self.class alloc] initWithCollectionViewStyle:collectionViewStyle
                                            cellIdentifiers:@[cellIdentifirtsArray]
-                                             cellClassNames:@[cellClassNamesArray]
+                                            cellClassNames:@[cellClassNamesArray]
                                                  cellSizes:@[cellSizesArray]
                                          headerIdentifiers:[NSObject wr_isEmtpty:headerIdentifier] ? nil : @[headerIdentifier]
                                                headerSizes:@[@(headerSize)]
                                          footerIdentifiers:[NSObject wr_isEmtpty:footerIdentifier] ? nil : @[footerIdentifier]
-                                               footerSizes:@[@(footerSize)]];    
+                                               footerSizes:@[@(footerSize)]];
 }
 - (instancetype)initSingleSectionMultiCellStyle:(WRCollectionViewStyle)collectionViewStyle
                                 cellIdentifiers:(NSArray <NSString *> *)cellIdentifiers
@@ -325,9 +325,9 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         for (NSInteger section = 0; section < cellIdentifiers.count; section++) {
             WRCollectionViewDataSource *dataSource = [WRCollectionViewDataSource new];
             dataSource.collectionViewStyle = collectionViewStyle;
-
+            
             NSMutableArray *objectsArray = [NSMutableArray arrayWithCapacity:10];
-
+            
             NSString *headerIdentifier = headerIdentifiers[section];
             if (![NSObject wr_isEmtpty:headerIdentifier]) {
                 WRCollectionViewObject *header = [WRCollectionViewObject new];
@@ -378,7 +378,7 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         NSMutableArray *sectionIdentifiersArray = [NSMutableArray arrayWithCapacity:sectionCellCount];
         NSMutableArray *sectionClassNamesArray = [NSMutableArray arrayWithCapacity:sectionCellCount];
         NSMutableArray *sectionSizesArray = [NSMutableArray arrayWithCapacity:sectionCellCount];
-
+        
         for (NSInteger item = 0; item < sectionCellCount; item++) {
             [sectionIdentifiersArray addObject:cellIdentifiers[section]];
             [sectionClassNamesArray addObject:cellClassNames[section]];
@@ -387,7 +387,53 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         [cellIdentifiersArray addObject:sectionIdentifiersArray];
         [cellClassNamesArray addObject:sectionClassNamesArray];
         [cellSizesArray addObject:sectionSizesArray];
-
+        
+    }
+    return [[self.class alloc] initWithCollectionViewStyles:collectionViewStyles
+                                            cellIdentifiers:cellIdentifiersArray
+                                             cellClassNames:cellClassNamesArray
+                                                  cellSizes:cellSizesArray
+                                          headerIdentifiers:headerIdentifiers
+                                                headerSizes:headerSizes
+                                          footerIdentifiers:footerIdentifiers
+                                                footerSizes:footerSizes];
+}
+- (instancetype)initWithMultiSectionsSingleCellStyle:(WRCollectionViewStyle)collectionViewStyle
+                                      cellIdentifier:(NSString *)cellIdentifier
+                                       cellClassName:(NSString *)cellClassName
+                                            cellSize:(CGFloat)cellSize
+                                           cellCount:(NSArray <NSNumber *> * )cellCounts
+                                    headerIdentifier:(nullable NSString *)headerIdentifier
+                                          headerSize:(CGFloat)headerSize
+                                    footerIdentifier:(nullable NSString *)footerIdentifier
+                                          footerSize:(CGFloat)footerSize {
+    NSMutableArray *collectionViewStyles = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *headerIdentifiers = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *headerSizes = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *footerIdentifiers = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *footerSizes = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    
+    NSMutableArray *cellIdentifiersArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *cellClassNamesArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    NSMutableArray *cellSizesArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
+    for (NSInteger section = 0; section < cellCounts.count; section++) {
+        [collectionViewStyles addObject:@(collectionViewStyle)];
+        [headerIdentifiers addObject:headerIdentifier];
+        [headerSizes addObject:@(headerSize)];
+        [footerIdentifiers addObject:footerIdentifier];
+        [footerSizes addObject:@(footerSize)];
+        
+        NSMutableArray *sectionIdentifiersArray = [NSMutableArray arrayWithCapacity:1];
+        NSMutableArray *sectionClassNamesArray = [NSMutableArray arrayWithCapacity:1];
+        NSMutableArray *sectionSizesArray = [NSMutableArray arrayWithCapacity:1];
+        for (NSInteger index = 0; index < cellCounts[section].integerValue; index++) {
+            [sectionIdentifiersArray addObject:cellIdentifier];
+            [sectionClassNamesArray addObject:cellClassName];
+            [sectionSizesArray addObject:@(cellSize)];
+        }
+        [cellIdentifiersArray addObject:sectionIdentifiersArray];
+        [cellClassNamesArray addObject:sectionClassNamesArray];
+        [cellSizesArray addObject:sectionSizesArray];
     }
     return [[self.class alloc] initWithCollectionViewStyles:collectionViewStyles
                                             cellIdentifiers:cellIdentifiersArray
@@ -460,7 +506,7 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WRCollectionViewDataSource *dataSource = self.layout.dataSourcesArray[indexPath.section];
     WRCollectionViewObject *object = dataSource.cellObjectsArray[indexPath.item];
-
+    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:object.identifier forIndexPath:indexPath];
     if (self.loadedCellBlock) {
         self.loadedCellBlock(collectionView, cell, indexPath);
@@ -504,16 +550,16 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = self.wr_showsHorizontalScrollIndicator;
         _collectionView.showsVerticalScrollIndicator = self.wr_showsVerticalScrollIndicator;
-
+        
         NSMutableSet *cellIdentifierSet = [NSMutableSet setWithCapacity:2];
         NSMutableDictionary *cellClassNameDic = [NSMutableDictionary dictionaryWithCapacity:2];
         
         NSMutableSet *headerIdentifierSet = [NSMutableSet setWithCapacity:1];
         NSMutableDictionary *headerClassNameDic = [NSMutableDictionary dictionaryWithCapacity:1];
-
+        
         NSMutableSet *footerIdentifierSet = [NSMutableSet setWithCapacity:1];
         NSMutableDictionary *footerClassNameDic = [NSMutableDictionary dictionaryWithCapacity:1];
-
+        
         for (WRCollectionViewDataSource *dataSource in self.layout.dataSourcesArray) {
             for (WRCollectionViewObject *object in dataSource.objectsArray) {
                 switch (object.type) {
@@ -532,7 +578,7 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
                 }
             }
         }
-
+        
         for (NSInteger i = 0; i < cellIdentifierSet.count; i++) {
             NSString *cellIdentifier = cellIdentifierSet.allObjects[i];
             NSString *cellClassName = cellClassNameDic[cellIdentifier];
@@ -591,9 +637,10 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
                                bottomConstraint
                                ]
          ];
-
+        
     }
     return _collectionView;
 }
 
 @end
+

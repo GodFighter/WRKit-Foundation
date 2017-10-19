@@ -258,6 +258,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         identifier = cellObject.identifier;
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.backgroundColor = [UIColor clearColor];
     if (self.loadedCellBlock) {
         self.loadedCellBlock(tableView, cell, indexPath);
     }
@@ -267,15 +268,15 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     if (self.tableViewCellDidSelectedBlock) {
         self.tableViewCellDidSelectedBlock(tableView, indexPath);
     }
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell setSelected:NO animated:YES];
+    //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //    [cell setSelected:NO animated:YES];
 }
 #pragma mark - 懒加载
 - (UITableView *)tableView {
     if (_tableView == nil) {
         UITableView *contentTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView = contentTableView;
-        _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -295,7 +296,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
             [_tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellIdentifier];
         }
         [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"header"];
-
+        
         [self addSubview:_tableView];
         _tableView.translatesAutoresizingMaskIntoConstraints = NO;
         
@@ -307,19 +308,19 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
                                                                          multiplier: 1.0
                                                                            constant: 0];
         NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem: _tableView
-                                                                          attribute: NSLayoutAttributeTop
-                                                                          relatedBy: NSLayoutRelationEqual
-                                                                             toItem: self
-                                                                          attribute: NSLayoutAttributeTop
-                                                                         multiplier: 1.0
-                                                                           constant: 0];
-        NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem: _tableView
-                                                                         attribute: NSLayoutAttributeRight
+                                                                         attribute: NSLayoutAttributeTop
                                                                          relatedBy: NSLayoutRelationEqual
                                                                             toItem: self
-                                                                         attribute: NSLayoutAttributeRight
+                                                                         attribute: NSLayoutAttributeTop
                                                                         multiplier: 1.0
                                                                           constant: 0];
+        NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem: _tableView
+                                                                           attribute: NSLayoutAttributeRight
+                                                                           relatedBy: NSLayoutRelationEqual
+                                                                              toItem: self
+                                                                           attribute: NSLayoutAttributeRight
+                                                                          multiplier: 1.0
+                                                                            constant: 0];
         NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem: _tableView
                                                                             attribute: NSLayoutAttributeBottom
                                                                             relatedBy: NSLayoutRelationEqual
@@ -344,3 +345,4 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     return _dataSource;
 }
 @end
+

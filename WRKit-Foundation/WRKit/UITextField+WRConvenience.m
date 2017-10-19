@@ -42,9 +42,9 @@
                                                  borderColor:borderColor
                                                  placeholder:placeholder
                                                         font:font
-                                                 borderWidth:0
-                                                      radius:0
-                                                  showBorder:NO
+                                                 borderWidth:borderWidth
+                                                      radius:radius
+                                                  showBorder:showBorder
                                                   leftIndent:leftIndent
                                              clearButtonMode:UITextFieldViewModeNever
                                              secureTextEntry:NO];
