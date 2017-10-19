@@ -13,6 +13,9 @@
 #import "WRTableViewCell.h"
 #import "WRCollectionViewCell.h"
 
+#define WR_COLOR_RGB(r, g, b)           [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define WR_COLOR_RANDOM                WR_COLOR_RGB(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
 @interface ViewController ()
 
 @end
@@ -28,8 +31,8 @@
     NSLog(@"%ld==%ld==%ld",(long)[NSDate date].day, (long)[NSDate date].month, (long)[NSDate date].weekday);
         
 //    [self installTableView];
-//    [self installCollectionView];
-    [self installMongolianLabel];
+    [self installCollectionView];
+//    [self installMongolianLabel];
 }
 - (void)installMongolianLabel {
     WRMongolianLabel *label = [WRMongolianLabel new];
@@ -73,7 +76,7 @@
 //                                                                                      headerSize:50
 //                                                                                footerIdentifier:@"footer"
 //                                                                                      footerSize:50];
-    WRCollectionView *collectionView = [[WRCollectionView alloc] initWithCollectionViewStyles:@[
+    WRCollectionView *collectionView = [[WRCollectionView alloc] initMultiSectionsMultiCellStyles:@[
                                                                                                 @(WRCollectionViewStyle_LandscapeHalf),
                                                                                                 @(WRCollectionViewStyle_Landscape)
                                                                                                 ]
@@ -90,7 +93,7 @@
                                                                                                 @90
                                                                                                 ]
                                                                                    cellCounts:@[
-                                                                                                @4,
+                                                                                                @2,
                                                                                                 @3
                                                                                                 ]
                                                                             headerIdentifiers:@[
@@ -110,8 +113,21 @@
                                                                                                 @(50)
                                                                                                 ]];
     [self.view addSubview:collectionView];
+    
+    WRCollectionViewObject *object = [WRCollectionViewObject new];
+    object.size = 200;
+//    object.identifier = @"cell2";
+//    object.cellClassName = NSStringFromClass(WRCollectionViewCell.class);
+    
+    WRCollectionViewDataSource *dataSource = [WRCollectionViewDataSource new];
+    [dataSource.objectsArray addObject:object];
+    
+    [collectionView.dataSource addObject:dataSource];
+    
+    [collectionView wr_reload];
+    
     collectionView.loadedCellBlock = ^(UICollectionView * _Nonnull collectionView, UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
-        cell.backgroundColor = [UIColor redColor];
+        cell.backgroundColor = WR_COLOR_RANDOM;
     };
     collectionView.collectionViewCellDidSelectedBlock = ^(UICollectionView * _Nonnull collectionView, NSIndexPath * _Nonnull indexPath) {
     };
