@@ -337,6 +337,7 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
             dataSource.objectsArray = objectsArray;
             [dataSourceArray addObject:dataSource];
         }
+        self.dataSource = dataSourceArray;
         self.layout = [[WRCollectionViewLayout alloc] initWithDataSourcesArray:dataSourceArray
                                                            collectionViewStyle:collectionViewStyle];
     }
