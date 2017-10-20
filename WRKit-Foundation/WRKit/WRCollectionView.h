@@ -81,6 +81,11 @@ typedef NS_ENUM(NSInteger, WRCollectionViewObjectType) {
 @property (copy, nonatomic) void (^collectionViewCellDidSelectedBlock)(UICollectionView *collectionView, NSIndexPath *indexPath);
 /** 滚动停止block */
 @property (copy, nonatomic) void (^wr_scrollViewDidEndDeceleratingBlock)(UIScrollView *scrollView);
+/** 加载header block */
+@property (copy, nonatomic) void (^loadedHeaderBlock)(UICollectionView *collectionView, UICollectionReusableView *header, NSIndexPath *indexPath);
+/** 加载footer block */
+@property (copy, nonatomic) void (^loadedFooterBlock)(UICollectionView *collectionView, UICollectionReusableView *footer, NSIndexPath *indexPath);
+
 /** @note 单一section，单一cell样式的集合视图,无头尾视图
  */
 - (instancetype)initSingleSectionSingleCellStyle:(WRCollectionViewStyle)collectionViewStyle

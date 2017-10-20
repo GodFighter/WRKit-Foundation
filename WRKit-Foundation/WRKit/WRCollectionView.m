@@ -579,12 +579,17 @@ static NSString * const kWRCollectionViewCellIdentifier = @"kWRCollectionViewCel
         view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                                   withReuseIdentifier:headerObject.identifier
                                                          forIndexPath:indexPath];
-        
+        if (self.loadedHeaderBlock) {
+            self.loadedHeaderBlock(collectionView, view, indexPath);
+        }
     } else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         WRCollectionViewObject *footerObject = dataSource.footerObject;
         view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter
                                                   withReuseIdentifier:footerObject.identifier
                                                          forIndexPath:indexPath];
+        if (self.loadedFooterBlock) {
+            self.loadedFooterBlock(collectionView, view, indexPath);
+        }
     }
     return view;
 }
