@@ -24,14 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    NSString *string = @"12948200508";
-    NSLog(@"%d",string.wr_isPhoneNumber);
-    ;
-    NSLog(@"%ld==%ld==%ld",(long)[NSDate date].day, (long)[NSDate date].month, (long)[NSDate date].weekday);
         
-//    [self installTableView];
-    [self installCollectionView];
+    [self installTableView];
+//    [self installCollectionView];
 //    [self installMongolianLabel];
 }
 - (void)installMongolianLabel {
@@ -202,8 +197,13 @@
     [self.view addSubview:tableView];
     tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     tableView.loadedCellBlock = ^(UITableView * _Nonnull tableView, UITableViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
-        cell.backgroundColor = [UIColor redColor];
+        cell.backgroundColor = WR_COLOR_RANDOM;
     };
+    WRTableViewDataSource *datasource = tableView.dataSource;
+    WRTableViewCellObject *object = datasource.objectsArray.firstObject.firstObject;
+    object.height = 100;
+    [tableView wr_reloadData];
+    
     tableView.tableViewCellDidSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
         
     };

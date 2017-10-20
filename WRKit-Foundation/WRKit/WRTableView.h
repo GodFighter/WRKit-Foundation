@@ -18,11 +18,40 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
     /** 尾 */
     WRTableViewObjectType_Footer,
 };
-#pragma mark -
+#pragma mark - WRTableViewCellObject
+/** cell 的对象 */
+@interface WRTableViewCellObject : NSObject
+/** 表视图对象类型 */
+@property (assign, nonatomic) WRTableViewObjectType type;
+/** 标识 */
+@property (copy, nonatomic) NSString *identifier;
+/** cell 类名 */
+@property (copy, nonatomic) NSString *cellClassName;
+/** 高
+ @note 默认44
+ */
+@property (assign, nonatomic) CGFloat height;
+
+@end
+#pragma mark - WRTableViewDataSource
+@interface WRTableViewDataSource : NSObject
+/** 对象数组
+ @note 包含 WRTableViewCellObject 实例的数组
+ */
+@property (strong, nonatomic) NSMutableArray <NSMutableArray <WRTableViewCellObject *> *> *objectsArray;
+/** 表视图头视图高度数组 */
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* headerHeightsArray;
+/** 表视图尾视图高度数组 */
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* footerHeightsArray;
+
+@end
+#pragma mark - WRTableView
 /** 表视图 */
 @interface WRTableView : UIView
 /** 表视图 */
 @property (strong, nonatomic) UITableView *tableView;
+/** 数据源 */
+@property (strong, nonatomic) WRTableViewDataSource *dataSource;
 /** 头尾视图参数，不设置则为nil */
 @property (strong, nonatomic) NSArray <NSString *>*headerViewIdentifier;
 @property (strong, nonatomic) NSArray <NSString *>*headerViewClassName;
@@ -91,7 +120,7 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
                              cellHeight:(NSArray <NSArray <NSNumber *>*>*)cellHeights
                           headerHeights:(nullable NSArray <NSNumber *>*)headerHeights
                           footerHeights:(nullable NSArray <NSNumber *>*)footerHeights;
-
-
+/** 刷新 */
+- (void)wr_reloadData;
 NS_ASSUME_NONNULL_END
 @end

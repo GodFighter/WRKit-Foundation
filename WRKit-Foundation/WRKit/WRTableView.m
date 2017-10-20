@@ -11,21 +11,6 @@
 
 static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifier";
 
-#pragma mark -
-/** cell 的对象 */
-@interface WRTableViewCellObject : NSObject
-/** 表视图对象类型 */
-@property (assign, nonatomic) WRTableViewObjectType type;
-/** 标识 */
-@property (copy, nonatomic) NSString *identifier;
-/** cell 类名 */
-@property (copy, nonatomic) NSString *cellClassName;
-/** 高
- @note 默认44
- */
-@property (assign, nonatomic) CGFloat height;
-
-@end
 @implementation WRTableViewCellObject
 
 - (instancetype)init {
@@ -39,18 +24,6 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 
 @end
 
-#pragma mark -
-@interface WRTableViewDataSource : NSObject
-/** 对象数组
- @note 包含 WRTableViewCellObject 实例的数组
- */
-@property (strong, nonatomic) NSArray <NSArray <WRTableViewCellObject *> *> *objectsArray;
-/** 表视图头视图高度数组 */
-@property (strong, nonatomic) NSArray <NSNumber *>* headerHeightsArray;
-/** 表视图尾视图高度数组 */
-@property (strong, nonatomic) NSArray <NSNumber *>* footerHeightsArray;
-
-@end
 @implementation WRTableViewDataSource
 
 - (instancetype)init {
@@ -63,8 +36,6 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 
 #pragma mark -
 @interface WRTableView () <UITableViewDelegate, UITableViewDataSource>
-/** 数据源 */
-@property (strong, nonatomic) WRTableViewDataSource *dataSource;
 @end
 
 @implementation WRTableView
@@ -150,8 +121,8 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
             [objectsArray addObject:sectionsArray];
         }
         dataSource.objectsArray = objectsArray;
-        dataSource.headerHeightsArray = headerHeights;
-        dataSource.footerHeightsArray = footerHeights;
+        dataSource.headerHeightsArray = [NSMutableArray arrayWithArray:headerHeights];
+        dataSource.footerHeightsArray = [NSMutableArray arrayWithArray:footerHeights];
         self.dataSource = dataSource;
     }
     return self;
@@ -201,6 +172,9 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
             [_tableView registerClass:NSClassFromString(_footerViewClassName[i]) forHeaderFooterViewReuseIdentifier:self.footerViewIdentifier[i]];
         }
     }
+}
+- (void)wr_reloadData {
+    [self.tableView reloadData];
 }
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
