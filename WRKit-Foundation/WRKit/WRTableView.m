@@ -21,7 +21,12 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     }
     return self;
 }
-
+- (void)setObject:(id<WRTableViewObjectDelegate>)object {
+    _object = object;
+    self.identifier = object.identifier;
+    self.height = object.height;
+    self.cellClassName = NSStringFromClass(object.cellClass);
+}
 @end
 
 @implementation WRTableViewDataSource
@@ -174,7 +179,25 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     }
 }
 - (void)wr_reloadData {
+    [self checkRegister];
     [self.tableView reloadData];
+}
+#pragma mark - private
+- (void)checkRegister {
+    NSMutableSet *cellIdentifierSet = [NSMutableSet setWithCapacity:2];
+    NSMutableDictionary *cellClassNameDic = [NSMutableDictionary dictionaryWithCapacity:2];
+    
+    for (NSArray *objectsArray in self.wr_dataSource.objectsArray) {
+        for (WRTableViewCellObject *cellObject in objectsArray) {
+            [cellIdentifierSet addObject:cellObject.identifier];
+            [cellClassNameDic setObject:cellObject.cellClassName forKey:cellObject.identifier];
+        }
+    }
+    for (NSInteger i = 0; i < cellIdentifierSet.count; i++) {
+        NSString *cellIdentifier = cellIdentifierSet.allObjects[i];
+        NSString *cellClassName = cellClassNameDic[cellIdentifier];
+        [_tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellIdentifier];
+    }
 }
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -267,20 +290,8 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        NSMutableSet *cellIdentifierSet = [NSMutableSet setWithCapacity:2];
-        NSMutableDictionary *cellClassNameDic = [NSMutableDictionary dictionaryWithCapacity:2];
-        
-        for (NSArray *objectsArray in self.wr_dataSource.objectsArray) {
-            for (WRTableViewCellObject *cellObject in objectsArray) {
-                [cellIdentifierSet addObject:cellObject.identifier];
-                [cellClassNameDic setObject:cellObject.cellClassName forKey:cellObject.identifier];
-            }
-        }
-        for (NSInteger i = 0; i < cellIdentifierSet.count; i++) {
-            NSString *cellIdentifier = cellIdentifierSet.allObjects[i];
-            NSString *cellClassName = cellClassNameDic[cellIdentifier];
-            [_tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellIdentifier];
-        }
+        [self checkRegister];
+
         [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"header"];
         [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"footer"];
         

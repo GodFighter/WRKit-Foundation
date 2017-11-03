@@ -18,6 +18,15 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
     /** 尾 */
     WRTableViewObjectType_Footer,
 };
+@protocol WRTableViewObjectDelegate <NSObject>
+/** 高度 */
+@property (assign, nonatomic) CGFloat height;
+/** 标识*/
+@property (copy, nonatomic) NSString *identifier;
+/** 类 */
+@property (assign, nonatomic) Class cellClass;
+
+@end
 #pragma mark - WRTableViewCellObject
 /** cell 的对象 */
 @interface WRTableViewCellObject : NSObject
@@ -31,7 +40,8 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
  @note 默认44
  */
 @property (assign, nonatomic) CGFloat height;
-
+/** 持有对象*/
+@property (weak, nonatomic) id <WRTableViewObjectDelegate> object;
 @end
 #pragma mark - WRTableViewDataSource
 @interface WRTableViewDataSource : NSObject
