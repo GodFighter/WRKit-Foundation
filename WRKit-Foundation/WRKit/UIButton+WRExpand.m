@@ -16,13 +16,13 @@ static char wrExpandSizeKey;
 @implementation UIButton (WRExpand)
 
 - (void)wr_expandWidth:(CGFloat)width {
-    objc_setAssociatedObject(self, &wrExpandWidthKey, [NSNumber numberWithFloat:wrExpandWidthKey], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &wrExpandWidthKey, [NSNumber numberWithFloat:width], OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 - (void)wr_expandHeight:(CGFloat)height {
-    objc_setAssociatedObject(self, &wrExpandHeightKey, [NSNumber numberWithFloat:wrExpandHeightKey], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &wrExpandHeightKey, [NSNumber numberWithFloat:height], OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 - (void)wr_expandSize:(CGFloat)size {
-    objc_setAssociatedObject(self, &wrExpandSizeKey, [NSNumber numberWithFloat:wrExpandSizeKey], OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, &wrExpandSizeKey, [NSNumber numberWithFloat:size], OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 - (CGRect)expandRect {
     NSNumber *expandSize = objc_getAssociatedObject(self, &wrExpandSizeKey);

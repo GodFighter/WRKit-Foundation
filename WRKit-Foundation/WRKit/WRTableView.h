@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
 /** 表视图 */
 @property (strong, nonatomic) UITableView *tableView;
 /** 数据源 */
-@property (strong, nonatomic) WRTableViewDataSource *dataSource;
+@property (strong, nonatomic) WRTableViewDataSource *wr_dataSource;
 /** 头尾视图参数，不设置则为nil */
 @property (strong, nonatomic) NSArray <NSString *>*headerViewIdentifier;
 @property (strong, nonatomic) NSArray <NSString *>*headerViewClassName;
@@ -78,7 +78,7 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
 /** 表视图选中回调block
  @param tableView 表试图
  @param indexPath 选中索引
-*/
+ */
 @property (copy, nonatomic) void (^tableViewCellDidSelectedBlock)(UITableView *tableView, NSIndexPath *indexPath);
 
 /** 初始化
@@ -124,3 +124,4 @@ typedef NS_ENUM(NSInteger, WRTableViewObjectType) {
 - (void)wr_reloadData;
 NS_ASSUME_NONNULL_END
 @end
+

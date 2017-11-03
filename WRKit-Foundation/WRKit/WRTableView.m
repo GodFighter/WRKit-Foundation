@@ -123,7 +123,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         dataSource.objectsArray = objectsArray;
         dataSource.headerHeightsArray = [NSMutableArray arrayWithArray:headerHeights];
         dataSource.footerHeightsArray = [NSMutableArray arrayWithArray:footerHeights];
-        self.dataSource = dataSource;
+        self.wr_dataSource = dataSource;
     }
     return self;
 }
@@ -133,11 +133,11 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     }
 }
 - (nullable WRTableViewCellObject *)objectForIndexpath:(NSIndexPath *)indexPath {
-    if (self.dataSource.objectsArray.count <= indexPath.section ||
-        [self.dataSource.objectsArray[indexPath.section] count] < indexPath.item) {
+    if (self.wr_dataSource.objectsArray.count <= indexPath.section ||
+        [self.wr_dataSource.objectsArray[indexPath.section] count] < indexPath.item) {
         return nil;
     }
-    NSArray *sectionArray = self.dataSource.objectsArray[indexPath.section];
+    NSArray *sectionArray = self.wr_dataSource.objectsArray[indexPath.section];
     WRTableViewCellObject *cellObject = sectionArray[indexPath.item];
     return cellObject;
 }
@@ -178,44 +178,56 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
 }
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section < self.dataSource.headerHeightsArray.count) {
-        CGFloat sectionHeaderheight = self.dataSource.headerHeightsArray[section].floatValue;
+    if (section < self.wr_dataSource.headerHeightsArray.count) {
+        CGFloat sectionHeaderheight = self.wr_dataSource.headerHeightsArray[section].floatValue;
         return sectionHeaderheight <= 0 ? 0.1 : sectionHeaderheight;
     }
     return 0.1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (section < self.dataSource.footerHeightsArray.count) {
-        CGFloat sectionFooterheight = self.dataSource.footerHeightsArray[section].floatValue;
+    if (section < self.wr_dataSource.footerHeightsArray.count) {
+        CGFloat sectionFooterheight = self.wr_dataSource.footerHeightsArray[section].floatValue;
         return sectionFooterheight <= 0 ? 0.1 : sectionFooterheight;
     }
     return 0.1;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.headerViewIdentifier[section]];
+    if (view == nil) {
+        view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
+    }
     if (self.headerViewIdentifier.count > section) {
-        UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.headerViewIdentifier[section]];
         if (self.loadedHeaderBlock) {
             self.loadedHeaderBlock(tableView, view, section);
         }
         return view;
     }
-    return nil;
+    if (self.loadedHeaderBlock) {
+        self.loadedHeaderBlock(tableView, view, section);
+    }
+    return view;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.footerViewIdentifier[section]];
+    if (view == nil) {
+        view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"footer"];
+    }
     if (self.footerViewIdentifier.count > section) {
-        UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.footerViewIdentifier[section]];
         if (self.loadedFooterBlock) {
             self.loadedFooterBlock(tableView, view, section);
         }
         return view;
     }
-    return nil;
+    if (self.loadedFooterBlock) {
+        self.loadedFooterBlock(tableView, view, section);
+    }
+    return view;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSource.objectsArray.count;
+    return self.wr_dataSource.objectsArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *sectionArray = self.dataSource.objectsArray[section];
+    NSArray *sectionArray = self.wr_dataSource.objectsArray[section];
     return sectionArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -258,7 +270,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
         NSMutableSet *cellIdentifierSet = [NSMutableSet setWithCapacity:2];
         NSMutableDictionary *cellClassNameDic = [NSMutableDictionary dictionaryWithCapacity:2];
         
-        for (NSArray *objectsArray in self.dataSource.objectsArray) {
+        for (NSArray *objectsArray in self.wr_dataSource.objectsArray) {
             for (WRTableViewCellObject *cellObject in objectsArray) {
                 [cellIdentifierSet addObject:cellObject.identifier];
                 [cellClassNameDic setObject:cellObject.cellClassName forKey:cellObject.identifier];
@@ -270,6 +282,7 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
             [_tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellIdentifier];
         }
         [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"header"];
+        [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"footer"];
         
         [self addSubview:_tableView];
         _tableView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -312,11 +325,11 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     }
     return _tableView;
 }
-- (WRTableViewDataSource *)dataSource {
-    if (_dataSource == nil) {
-        _dataSource = [WRTableViewDataSource new];
+- (WRTableViewDataSource *)wr_dataSource {
+    if (_wr_dataSource == nil) {
+        _wr_dataSource = [WRTableViewDataSource new];
     }
-    return _dataSource;
+    return _wr_dataSource;
 }
 @end
 
