@@ -11,6 +11,8 @@
 
 /** 表视图 */
 @interface WRTableView : UIView
+/** 表视图 */
+@property (weak, nonatomic, readonly) UITableView *tableView;
 /** 加载cell block
  @param tableView 表合视图
  @param cell cell
@@ -18,6 +20,11 @@
  @param object 持有对象
  */
 @property (copy, nonatomic) void (^loadedCellBlock)(UITableView *tableView, UITableViewCell *cell, NSIndexPath *indexPath, id object);
+/** 表视图选中回调block
+ @param tableView 表试图
+ @param indexPath 选中索引
+ */
+@property (copy, nonatomic) void (^tableViewCellDidSelectedBlock)(UITableView *tableView, NSIndexPath *indexPath);
 /** 加载header block
  @param tableView 表合视图
  @param header header
@@ -39,5 +46,7 @@
 - (void)update;
 /** 刷新数据，更新表视图注册信息 */
 - (void)updateDataSource;
+- (void)reloadIndexPath:(NSIndexPath *)indexPath height:(CGFloat)height;
 
 @end
+

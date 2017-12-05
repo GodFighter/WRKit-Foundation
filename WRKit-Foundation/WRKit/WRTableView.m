@@ -10,7 +10,7 @@
 
 @interface WRTableView () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) WRTableViewDataSource *dataSource;
-@property (strong, nonatomic) UITableView *tableView;
+@property (weak, nonatomic, readwrite) UITableView *tableView;
 @end
 @implementation WRTableView
 
@@ -27,6 +27,12 @@
 - (void)updateDataSource {
     [self registerTableView];
     [self.tableView reloadData];
+}
+- (void)reloadIndexPath:(NSIndexPath *)indexPath height:(CGFloat)height {
+    WRTableViewSection *section = self.dataSource.sectionsArray[indexPath.section];
+    WRTableViewItem *item = section.itemsArray[indexPath.item];
+    item.height = height;
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 #pragma mark - view
 - (void)didMoveToSuperview {
@@ -47,7 +53,7 @@
     NSMutableDictionary *footerClassDic = [NSMutableDictionary dictionaryWithCapacity:2];
     NSMutableSet *cellIdSet = [NSMutableSet set];
     NSMutableDictionary *cellClassDic = [NSMutableDictionary dictionaryWithCapacity:2];
-
+    
     // 查找所有需要注册的头尾和cell
     for (WRTableViewSection *section in self.dataSource.sectionsArray) {
         [headerIdSet addObject:section.headerIdentifier];
@@ -87,7 +93,7 @@
     if (self.loadedHeaderBlock) {
         self.loadedHeaderBlock(tableView, view, section);
     }
-   return view;
+    return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     WRTableViewSection *sectionObject = self.dataSource.sectionsArray[section];
@@ -123,6 +129,11 @@
         self.loadedCellBlock(tableView, cell, indexPath, item.object);
     }
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.tableViewCellDidSelectedBlock) {
+        self.tableViewCellDidSelectedBlock(tableView, indexPath);
+    }
 }
 #pragma mark - lazy
 - (UITableView *)tableView {
@@ -174,11 +185,11 @@
     return _tableView;
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
