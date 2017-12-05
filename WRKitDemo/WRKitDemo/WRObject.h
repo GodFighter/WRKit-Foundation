@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "WRKit.h"
 
-@interface WRObject : NSObject <WRTableViewObjectDelegate>
+@interface WRObject : NSObject 
 
 @end

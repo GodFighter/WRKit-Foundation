@@ -1,303 +1,140 @@
 //
 //  WRTableView.m
-//  WRKitDemo
+//  WRTableView
 //
-//  Created by xianghui on 2017/9/26.
+//  Created by xianghui on 2017/11/30.
 //  Copyright © 2017年 xianghui. All rights reserved.
 //
 
-#import "NSObject+WRJudge.h"
 #import "WRTableView.h"
 
-static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifier";
-
-@implementation WRTableViewCellObject
-
-- (instancetype)init {
-    if (self = [super init]) {
-        self.identifier = kWRTableViewCellIdentifier;
-        self.height = 44;
-        self.cellClassName = NSStringFromClass(UITableViewCell.class);
-    }
-    return self;
-}
-- (void)setObject:(id<WRTableViewObjectDelegate>)object {
-    _object = object;
-    self.identifier = object.identifier;
-    self.height = object.height;
-    self.cellClassName = NSStringFromClass(object.cellClass);
-}
-@end
-
-@implementation WRTableViewDataSource
-
-- (instancetype)init {
-    if (self = [super init]) {
-        self.objectsArray = [NSMutableArray arrayWithCapacity:10];
-    }
-    return self;
-}
-@end
-
-#pragma mark -
 @interface WRTableView () <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) WRTableViewDataSource *dataSource;
+@property (strong, nonatomic) UITableView *tableView;
 @end
-
 @implementation WRTableView
 
-- (instancetype)initSingleSectionSingleCellIdentifier:(NSString *)cellIdentifier
-                                        cellClassName:(nullable NSString *)cellClassName
-                                           cellHeight:(CGFloat)cellHeight
-                                            cellCount:(NSInteger)cellCount {
-    return [[self.class alloc] initSingleSectionSingleCellIdentifier:cellIdentifier
-                                                       cellClassName:cellClassName
-                                                          cellHeight:cellHeight
-                                                           cellCount:cellCount
-                                                        headerHeight:0
-                                                        footerHeight:0];
-    
-}
-- (instancetype)initSingleSectionSingleCellIdentifier:(NSString *)cellIdentifier
-                                        cellClassName:(nullable NSString *)cellClassName
-                                           cellHeight:(CGFloat)cellHeight
-                                            cellCount:(NSInteger)cellCount
-                                         headerHeight:(CGFloat)headerHeight
-                                         footerHeight:(CGFloat)footerHeight {
-    NSMutableArray *identifiersArray = [NSMutableArray arrayWithCapacity:cellCount];
-    NSMutableArray *classNamesArray = [NSMutableArray arrayWithCapacity:cellCount];
-    NSMutableArray *heightsArray = [NSMutableArray arrayWithCapacity:cellCount];
-    for (NSInteger index = 0; index < cellCount; index++) {
-        [identifiersArray addObject:cellIdentifier];
-        [classNamesArray addObject:[NSObject wr_isEmtpty:cellClassName] ? NSStringFromClass(UITableViewCell.class) : cellClassName];
-        [heightsArray addObject:cellHeight == 0 ? @(44) : @(cellHeight)];
-    }
-    return [[self.class alloc] initWithCellIdentifiers:@[identifiersArray]
-                                        cellClassNames:@[classNamesArray]
-                                            cellHeight:@[heightsArray]
-                                         headerHeights:@[@(headerHeight)]
-                                         footerHeights:@[@(footerHeight)]];
-}
-- (instancetype)initMultiSectionSingleCellIdentifier:(NSString *)cellIdentifier
-                                       cellClassName:(nullable NSString *)cellClassName
-                                          cellHeight:(CGFloat)cellHeight
-                                           cellCount:(NSArray <NSNumber *> *)cellCounts
-                                       headerHeights:(nullable NSArray <NSNumber *>*)headerHeights
-                                       footerHeights:(nullable NSArray <NSNumber *>*)footerHeights {
-    NSMutableArray *identifiersArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
-    NSMutableArray *classNamesArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
-    NSMutableArray *heightsArray = [NSMutableArray arrayWithCapacity:cellCounts.count];
-    
-    for (NSInteger section = 0; section < cellCounts.count; section++) {
-        NSMutableArray *sectionIdentifiers = [NSMutableArray arrayWithCapacity:1];
-        NSMutableArray *sectionClassNames = [NSMutableArray arrayWithCapacity:1];
-        NSMutableArray *sectionHeights = [NSMutableArray arrayWithCapacity:1];
-        for (NSInteger index = 0; index < cellCounts[section].integerValue; index++) {
-            [sectionIdentifiers addObject:cellIdentifier];
-            [sectionClassNames addObject:[NSObject wr_isEmtpty:cellClassName] ? NSStringFromClass(UITableViewCell.class) : cellClassName];
-            [sectionHeights addObject:cellHeight == 0 ? @(44) : @(cellHeight)];
-        }
-        [identifiersArray addObject:sectionIdentifiers];
-        [classNamesArray addObject:sectionClassNames];
-        [heightsArray addObject:sectionHeights];
-    }
-    return [[self.class alloc] initWithCellIdentifiers:identifiersArray
-                                        cellClassNames:classNamesArray
-                                            cellHeight:heightsArray
-                                         headerHeights:headerHeights
-                                         footerHeights:footerHeights];
-}
-- (instancetype)initWithCellIdentifiers:(NSArray <NSArray <NSString *>*>*)cellIdentifiers
-                         cellClassNames:(NSArray <NSArray <NSString *>*>*)cellClassNames
-                             cellHeight:(NSArray <NSArray <NSNumber *>*>*)cellHeights
-                          headerHeights:(nullable NSArray <NSNumber *>*)headerHeights
-                          footerHeights:(nullable NSArray <NSNumber *>*)footerHeights {
+- (instancetype)initWithDataSource:(WRTableViewDataSource *)dataSource {
     if (self = [super init]) {
-        WRTableViewDataSource *dataSource = [WRTableViewDataSource new];
-        NSMutableArray *objectsArray = [NSMutableArray arrayWithCapacity:cellIdentifiers.count];
-        for (NSInteger section = 0; section < cellIdentifiers.count; section++) {
-            NSMutableArray *sectionsArray = [NSMutableArray arrayWithCapacity:cellIdentifiers[section].count];
-            for (NSInteger item = 0; item < cellIdentifiers[section].count; item++) {
-                WRTableViewCellObject *cellObject = [WRTableViewCellObject new];
-                cellObject.identifier = cellIdentifiers[section][item];
-                cellObject.cellClassName = cellClassNames[section][item];
-                cellObject.height = cellHeights[section][item].floatValue;
-                [sectionsArray addObject:cellObject];
-            }
-            [objectsArray addObject:sectionsArray];
-        }
-        dataSource.objectsArray = objectsArray;
-        dataSource.headerHeightsArray = [NSMutableArray arrayWithArray:headerHeights];
-        dataSource.footerHeightsArray = [NSMutableArray arrayWithArray:footerHeights];
-        self.wr_dataSource = dataSource;
+        self.dataSource = dataSource;
     }
     return self;
 }
+#pragma mark - public
+- (void)update {
+    [self.tableView reloadData];
+}
+- (void)updateDataSource {
+    [self registerTableView];
+    [self.tableView reloadData];
+}
+#pragma mark - view
 - (void)didMoveToSuperview {
     if (self.superview != nil) {
         self.tableView.hidden = NO;
     }
 }
-- (nullable WRTableViewCellObject *)objectForIndexpath:(NSIndexPath *)indexPath {
-    if (self.wr_dataSource.objectsArray.count <= indexPath.section ||
-        [self.wr_dataSource.objectsArray[indexPath.section] count] < indexPath.item) {
-        return nil;
-    }
-    NSArray *sectionArray = self.wr_dataSource.objectsArray[indexPath.section];
-    WRTableViewCellObject *cellObject = sectionArray[indexPath.item];
-    return cellObject;
-}
-- (void)setHeaderViewIdentifier:(NSArray<NSString *> *)headerViewIdentifier {
-    _headerViewIdentifier = headerViewIdentifier;
-    if (_headerViewIdentifier.count == self.headerViewClassName.count) {
-        for (NSInteger i = 0; i < headerViewIdentifier.count; i++) {
-            [_tableView registerClass:NSClassFromString(self.headerViewClassName[i]) forHeaderFooterViewReuseIdentifier:_headerViewIdentifier[i]];
-        }
-    }
-}
-- (void)setHeaderViewClassName:(NSArray<NSString *> *)headerViewClassName {
-    _headerViewClassName = headerViewClassName;
-    if (_headerViewClassName.count == self.headerViewIdentifier.count) {
-        for (NSInteger i = 0; i < _headerViewClassName.count; i++) {
-            [_tableView registerClass:NSClassFromString(_headerViewClassName[i]) forHeaderFooterViewReuseIdentifier:self.headerViewIdentifier[i]];
-        }
-    }
-}
-- (void)setFooterViewIdentifier:(NSArray<NSString *> *)footerViewIdentifier {
-    _footerViewIdentifier = footerViewIdentifier;
-    if (_footerViewIdentifier.count == self.footerViewClassName.count) {
-        for (NSInteger i = 0; i < _footerViewIdentifier.count; i++) {
-            [_tableView registerClass:NSClassFromString(self.footerViewClassName[i]) forHeaderFooterViewReuseIdentifier:self.footerViewIdentifier[i]];
-        }
-    }
-}
-- (void)setFooterViewClassName:(NSArray<NSString *> *)footerViewClassName {
-    _footerViewClassName = footerViewClassName;
-    if (_footerViewClassName.count == self.footerViewIdentifier.count) {
-        for (NSInteger i = 0; i < _footerViewClassName.count; i++) {
-            [_tableView registerClass:NSClassFromString(_footerViewClassName[i]) forHeaderFooterViewReuseIdentifier:self.footerViewIdentifier[i]];
-        }
-    }
-}
-- (void)wr_reloadData {
-    [self checkRegister];
-    [self.tableView reloadData];
-}
 #pragma mark - private
-- (void)checkRegister {
-    NSMutableSet *cellIdentifierSet = [NSMutableSet setWithCapacity:2];
-    NSMutableDictionary *cellClassNameDic = [NSMutableDictionary dictionaryWithCapacity:2];
-    
-    for (NSArray *objectsArray in self.wr_dataSource.objectsArray) {
-        for (WRTableViewCellObject *cellObject in objectsArray) {
-            [cellIdentifierSet addObject:cellObject.identifier];
-            [cellClassNameDic setObject:cellObject.cellClassName forKey:cellObject.identifier];
+- (void)setDataSource:(WRTableViewDataSource *)dataSource {
+    _dataSource = dataSource;
+    [self registerTableView];
+}
+// 注册表视图
+- (void)registerTableView {
+    NSMutableSet *headerIdSet = [NSMutableSet set];
+    NSMutableDictionary *headerClassDic = [NSMutableDictionary dictionaryWithCapacity:2];
+    NSMutableSet *footerIdSet = [NSMutableSet set];
+    NSMutableDictionary *footerClassDic = [NSMutableDictionary dictionaryWithCapacity:2];
+    NSMutableSet *cellIdSet = [NSMutableSet set];
+    NSMutableDictionary *cellClassDic = [NSMutableDictionary dictionaryWithCapacity:2];
+
+    // 查找所有需要注册的头尾和cell
+    for (WRTableViewSection *section in self.dataSource.sectionsArray) {
+        [headerIdSet addObject:section.headerIdentifier];
+        [headerClassDic setObject:section.headerClass forKey:section.headerIdentifier];
+        [footerIdSet addObject:section.footerIdentifier];
+        [footerClassDic setObject:section.footerClass forKey:section.footerIdentifier];
+        for (WRTableViewItem *item in section.itemsArray) {
+            [cellIdSet addObject:item.identifier];
+            [cellClassDic setObject:item.cellClass forKey:item.identifier];
         }
     }
-    for (NSInteger i = 0; i < cellIdentifierSet.count; i++) {
-        NSString *cellIdentifier = cellIdentifierSet.allObjects[i];
-        NSString *cellClassName = cellClassNameDic[cellIdentifier];
-        [_tableView registerClass:NSClassFromString(cellClassName) forCellReuseIdentifier:cellIdentifier];
+    // cell注册
+    for (NSInteger i = 0; i < cellIdSet.count; i++) {
+        NSString *cellId = cellIdSet.allObjects[i];
+        [self.tableView registerClass:cellClassDic[cellId] forCellReuseIdentifier:cellId];
+    }
+    // 注册头
+    for (NSInteger i = 0; i < headerIdSet.count; i++) {
+        NSString *headerId = headerIdSet.allObjects[i];
+        [self.tableView registerClass:headerClassDic[headerId] forHeaderFooterViewReuseIdentifier:headerId];
+    }
+    // 注册尾
+    for (NSInteger i = 0; i < footerIdSet.count; i++) {
+        NSString *footerId = footerIdSet.allObjects[i];
+        [self.tableView registerClass:footerClassDic[footerId] forHeaderFooterViewReuseIdentifier:footerId];
     }
 }
 #pragma mark - UITableView 委托
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section < self.wr_dataSource.headerHeightsArray.count) {
-        CGFloat sectionHeaderheight = self.wr_dataSource.headerHeightsArray[section].floatValue;
-        return sectionHeaderheight <= 0 ? 0.1 : sectionHeaderheight;
-    }
-    return 0.1;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (section < self.wr_dataSource.footerHeightsArray.count) {
-        CGFloat sectionFooterheight = self.wr_dataSource.footerHeightsArray[section].floatValue;
-        return sectionFooterheight <= 0 ? 0.1 : sectionFooterheight;
-    }
-    return 0.1;
+    WRTableViewSection *sectionObject = self.dataSource.sectionsArray[section];
+    return sectionObject.headerHeight;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.headerViewIdentifier[section]];
-    if (view == nil) {
-        view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
-    }
-    if (self.headerViewIdentifier.count > section) {
-        if (self.loadedHeaderBlock) {
-            self.loadedHeaderBlock(tableView, view, section);
-        }
-        return view;
-    }
+    WRTableViewSection *sectionObject = self.dataSource.sectionsArray[section];
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:sectionObject.headerIdentifier];
+    view.contentView.backgroundColor = [UIColor clearColor];
     if (self.loadedHeaderBlock) {
         self.loadedHeaderBlock(tableView, view, section);
     }
-    return view;
+   return view;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    WRTableViewSection *sectionObject = self.dataSource.sectionsArray[section];
+    return sectionObject.footerHeight;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.footerViewIdentifier[section]];
-    if (view == nil) {
-        view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"footer"];
-    }
-    if (self.footerViewIdentifier.count > section) {
-        if (self.loadedFooterBlock) {
-            self.loadedFooterBlock(tableView, view, section);
-        }
-        return view;
-    }
+    WRTableViewSection *sectionObject = self.dataSource.sectionsArray[section];
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:sectionObject.footerIdentifier];
+    view.contentView.backgroundColor = [UIColor clearColor];
     if (self.loadedFooterBlock) {
         self.loadedFooterBlock(tableView, view, section);
     }
     return view;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.wr_dataSource.objectsArray.count;
+    return self.dataSource.sectionsArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *sectionArray = self.wr_dataSource.objectsArray[section];
-    return sectionArray.count;
+    WRTableViewSection *sectionObject = self.dataSource.sectionsArray[section];
+    return sectionObject.itemsArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WRTableViewCellObject *cellObject = [self objectForIndexpath:indexPath];
-    if ([NSObject wr_isEmtpty:cellObject]) {
-        return 44;
-    }
-    return cellObject.height;
+    WRTableViewSection *section = self.dataSource.sectionsArray[indexPath.section];
+    WRTableViewItem *item = section.itemsArray[indexPath.item];
+    return item.height;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WRTableViewCellObject *cellObject = [self objectForIndexpath:indexPath];
-    NSString *identifier = kWRTableViewCellIdentifier;
-    if (![NSObject wr_isEmtpty:cellObject]) {
-        identifier = cellObject.identifier;
-    }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    WRTableViewSection *section = self.dataSource.sectionsArray[indexPath.section];
+    WRTableViewItem *item = section.itemsArray[indexPath.item];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:item.identifier];
     cell.backgroundColor = [UIColor clearColor];
     if (self.loadedCellBlock) {
-        self.loadedCellBlock(tableView, cell, indexPath);
+        self.loadedCellBlock(tableView, cell, indexPath, item.object);
     }
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.tableViewCellDidSelectedBlock) {
-        self.tableViewCellDidSelectedBlock(tableView, indexPath);
-    }
-    //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    //    [cell setSelected:NO animated:YES];
-}
-#pragma mark - 懒加载
+#pragma mark - lazy
 - (UITableView *)tableView {
     if (_tableView == nil) {
-        UITableView *contentTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _tableView = contentTableView;
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = tableView;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        [self checkRegister];
-
-        [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"header"];
-        [_tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"footer"];
-        
-        [self addSubview:_tableView];
         _tableView.translatesAutoresizingMaskIntoConstraints = NO;
-        
+        [self addSubview:_tableView];
         NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem: _tableView
                                                                           attribute: NSLayoutAttributeLeft
                                                                           relatedBy: NSLayoutRelationEqual
@@ -336,11 +173,12 @@ static NSString * const kWRTableViewCellIdentifier = @"kWRTableViewCellIdentifie
     }
     return _tableView;
 }
-- (WRTableViewDataSource *)wr_dataSource {
-    if (_wr_dataSource == nil) {
-        _wr_dataSource = [WRTableViewDataSource new];
-    }
-    return _wr_dataSource;
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
 }
-@end
+*/
 
+@end

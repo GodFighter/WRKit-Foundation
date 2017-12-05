@@ -26,6 +26,7 @@
 		BB14933F1F948C2A00DDC429 /* WRLine.m in Sources */ = {isa = PBXBuildFile; fileRef = BB14933E1F948C2A00DDC429 /* WRLine.m */; };
 		BB1493411F94A04500DDC429 /* mnglbaizhengaat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB1493401F94A04500DDC429 /* mnglbaizhengaat.ttf */; };
 		BB161E681F7B8C4D005B73C7 /* WRCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */; };
+		BB7E478E1FD62BB8007690B8 /* WRTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7E478D1FD62BB8007690B8 /* WRTableViewDataSource.m */; };
 		BB9BE9861F453D7D009FA8AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9851F453D7D009FA8AC /* main.m */; };
 		BB9BE9891F453D7D009FA8AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE9881F453D7D009FA8AC /* AppDelegate.m */; };
 		BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE98B1F453D7D009FA8AC /* ViewController.m */; };
@@ -79,6 +80,8 @@
 		BB1493401F94A04500DDC429 /* mnglbaizhengaat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mnglbaizhengaat.ttf; sourceTree = "<group>"; };
 		BB161E661F7B8C4D005B73C7 /* WRCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRCollectionView.h; sourceTree = "<group>"; };
 		BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRCollectionView.m; sourceTree = "<group>"; };
+		BB7E478C1FD62BB7007690B8 /* WRTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRTableViewDataSource.h; sourceTree = "<group>"; };
+		BB7E478D1FD62BB8007690B8 /* WRTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRTableViewDataSource.m; sourceTree = "<group>"; };
 		BB9BE9811F453D7D009FA8AC /* WRKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WRKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9BE9851F453D7D009FA8AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB9BE9871F453D7D009FA8AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				BB0EF49D1F7A03D200CE3846 /* UIView+WRMongolian.m */,
 				BBA19A0C1F7A3946000102A2 /* WRTableView.h */,
 				BBA19A0D1F7A3946000102A2 /* WRTableView.m */,
+				BB7E478C1FD62BB7007690B8 /* WRTableViewDataSource.h */,
+				BB7E478D1FD62BB8007690B8 /* WRTableViewDataSource.m */,
 				BB161E661F7B8C4D005B73C7 /* WRCollectionView.h */,
 				BB161E671F7B8C4D005B73C7 /* WRCollectionView.m */,
 				BB1493361F9455FB00DDC429 /* CoreText */,
@@ -314,6 +319,7 @@
 				BB9BE98C1F453D7D009FA8AC /* ViewController.m in Sources */,
 				BB0EF4971F7A03BB00CE3846 /* UITextField+WRContentChanged.m in Sources */,
 				BB0EF4B91F7A2E5500CE3846 /* NSObject+WRUserDefaults.m in Sources */,
+				BB7E478E1FD62BB8007690B8 /* WRTableViewDataSource.m in Sources */,
 				BBA1A6121F7CF10C00973672 /* WRCollectionViewCell.m in Sources */,
 				BB0EF4951F7A03BB00CE3846 /* UILabel+WRConvenience.m in Sources */,
 				BB0EF4981F7A03BB00CE3846 /* UITextField+WRConvenience.m in Sources */,

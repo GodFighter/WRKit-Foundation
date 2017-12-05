@@ -192,34 +192,34 @@
                                                             headerHeights:@[@(100), @(100)]
                                                             footerHeights:@[@(100)]];
      */
-    WRTableView *tableView = [[WRTableView alloc] initSingleSectionSingleCellIdentifier:@"cell"
-                                                                          cellClassName:NSStringFromClass(WRTableViewCell.class)
-                                                                             cellHeight:50
-                                                                              cellCount:4
-                              headerHeight:50 footerHeight:30];
-    [self.view addSubview:tableView];
-    tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    tableView.loadedCellBlock = ^(UITableView * _Nonnull tableView, UITableViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
-        cell.backgroundColor = WR_COLOR_RANDOM;
-    };
-    WRTableViewDataSource *datasource = tableView.wr_dataSource;
-    
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-    for (NSInteger i = 0; i < 3; i++) {
-        WRObject *object = [WRObject new];
-        WRTableViewCellObject *object1 = [WRTableViewCellObject new];
-        object1.object = object;
-        [array addObject:object1];
-    }
-    [datasource.objectsArray addObject:array];
-
-//    WRTableViewCellObject *object = datasource.objectsArray.firstObject.firstObject;
-//    object.height = 100;
-    [tableView wr_reloadData];
-    
-    tableView.tableViewCellDidSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
-        
-    };
+//    WRTableView *tableView = [[WRTableView alloc] initSingleSectionSingleCellIdentifier:@"cell"
+//                                                                          cellClassName:NSStringFromClass(WRTableViewCell.class)
+//                                                                             cellHeight:50
+//                                                                              cellCount:4
+//                              headerHeight:50 footerHeight:30];
+//    [self.view addSubview:tableView];
+//    tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//    tableView.loadedCellBlock = ^(UITableView * _Nonnull tableView, UITableViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath) {
+//        cell.backgroundColor = WR_COLOR_RANDOM;
+//    };
+//    WRTableViewDataSource *datasource = tableView.wr_dataSource;
+//    
+//    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+//    for (NSInteger i = 0; i < 3; i++) {
+//        WRObject *object = [WRObject new];
+//        WRTableViewCellObject *object1 = [WRTableViewCellObject new];
+//        object1.object = object;
+//        [array addObject:object1];
+//    }
+//    [datasource.objectsArray addObject:array];
+//
+////    WRTableViewCellObject *object = datasource.objectsArray.firstObject.firstObject;
+////    object.height = 100;
+//    [tableView wr_reloadData];
+//    
+//    tableView.tableViewCellDidSelectedBlock = ^(UITableView *tableView, NSIndexPath *indexPath) {
+//        
+//    };
 }
 
 - (void)didReceiveMemoryWarning {
