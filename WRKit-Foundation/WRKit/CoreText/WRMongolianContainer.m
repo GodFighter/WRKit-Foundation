@@ -16,6 +16,7 @@
         _font = [UIFont systemFontOfSize:15];
         _linesArray = [NSMutableArray arrayWithCapacity:10];
         _lineSpacing = 0;
+        _textColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -48,10 +49,15 @@
     [self parseCoreTextContent];
 }
 - (NSAttributedString *)drawString {
+    if (self.linesArray.count == 0) {
+        return nil;
+    }
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:self.text
                                                                                attributes:@{
-                                                                                            NSFontAttributeName : self.font
+                                                                                            NSFontAttributeName : self.font,
+                                                                                            NSForegroundColorAttributeName : self.textColor
                                                                                             }];
+    [string addAttributes:@{NSForegroundColorAttributeName : self.highlightColor} range:self.highlightRange];
     NSMutableParagraphStyle *paragraphStyle =  [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = self.displayLineCount >= self.linesArray.count - 1 ? NSLineBreakByWordWrapping :  NSLineBreakByTruncatingTail;
     
@@ -65,9 +71,9 @@
     [self.linesArray removeAllObjects];
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:self.text
-                                                                               attributes:@{
-                                                                                            NSFontAttributeName : self.font
-                                                                                            }];
+                                                                              attributes:@{
+                                                                                           NSFontAttributeName : self.font
+                                                                                           }];
     CTFramesetterRef framesetterRef = CTFramesetterCreateWithAttributedString((__bridge CFMutableAttributedStringRef)string);
     CGPathRef pathRef = CGPathCreateWithRect(CGRectMake(0,
                                                         0,

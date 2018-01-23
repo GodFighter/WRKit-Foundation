@@ -15,5 +15,11 @@
 @property (strong, nonatomic) UIFont *font;
 /** 行间距 */
 @property (assign, nonatomic) CGFloat lineSpacing;
+/** 文本颜色 */
+@property (strong, nonatomic) UIColor *textColor;
+/** 高亮颜色 */
+@property (strong, nonatomic) UIColor *highlightColor;
+/** 高亮范围 */
+@property (assign, nonatomic) NSRange highlightRange;
 
 @end

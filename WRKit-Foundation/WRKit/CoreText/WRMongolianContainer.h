@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UIFont *font;
 /** 文本 */
 @property (strong, nonatomic) NSString *text;
+/** 颜色 */
+@property (strong, nonatomic) UIColor *textColor;
 /** 显示范围 */
 @property (assign, nonatomic) CGSize displaySize;
 /** 行间距 默认 0 */
@@ -26,5 +28,9 @@
 @property (strong, nonatomic, readonly) NSAttributedString *drawString;
 /** 显示的行数 */
 @property (assign, nonatomic, readonly) NSUInteger displayLineCount;
+/** 高亮颜色 */
+@property (strong, nonatomic) UIColor *highlightColor;
+/** 高亮范围 */
+@property (assign, nonatomic) NSRange highlightRange;
 
 @end

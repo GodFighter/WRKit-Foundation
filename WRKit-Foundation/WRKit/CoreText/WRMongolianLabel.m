@@ -6,6 +6,7 @@
 //  Copyright © 2017年 xianghui. All rights reserved.
 //
 
+#import "NSString+WRSize.h"
 #import "WRMongolianContainer.h"
 
 #import "WRMongolianLabel.h"
@@ -18,9 +19,13 @@
 @implementation WRMongolianLabel
 
 - (void)setText:(NSString *)text {
+    self.backgroundColor = [UIColor clearColor];
     _text = text;
     if (CGSizeEqualToSize(self.container.displaySize, CGSizeZero)) {
         self.container.displaySize = CGSizeMake(self.frame.size.height, self.frame.size.width);
+        if (CGSizeEqualToSize(self.container.displaySize, CGSizeZero)) {
+            self.container.displaySize = CGSizeMake([text wr_widthWithFont:_font height:_font.lineHeight], ceil(_font.lineHeight));
+        }
     }
     self.container.text = text;
     [self setNeedsDisplay];
@@ -29,6 +34,7 @@
     [super setFrame:frame];
     self.container.displaySize = CGSizeMake(frame.size.height, frame.size.width);
     [self setNeedsDisplay];
+//    NSLog(@"%@--%@",[NSValue valueWithCGSize:self.container.displaySize], [NSValue valueWithCGRect:frame]);
 }
 - (void)setFont:(UIFont *)font {
     _font = font;
@@ -40,6 +46,21 @@
     self.container.lineSpacing = lineSpacing;
     [self setNeedsDisplay];
 }
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    self.container.textColor = textColor;
+    [self setNeedsDisplay];
+}
+- (void)setHighlightColor:(UIColor *)highlightColor {
+    _highlightColor = highlightColor;
+    self.container.highlightColor = highlightColor;
+    [self setNeedsLayout];
+}
+- (void)setHighlightRange:(NSRange)highlightRange {
+    _highlightRange = highlightRange;
+    self.container.highlightRange = highlightRange;
+    [self setNeedsLayout];
+}
 #pragma mark - 懒加载
 - (WRMongolianContainer *)container {
     if (_container == nil) {
@@ -50,6 +71,9 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
+    if (self.text == nil) {
+        return;
+    }
     [self wr_drawRect];
 }
 - (void)wr_drawRect {
@@ -58,6 +82,10 @@
     
     NSAttributedString *string = self.container.drawString;
 
+    if (string == nil) {
+        return;
+    }
+    
     CTFramesetterRef framesetterRef = CTFramesetterCreateWithAttributedString((__bridge CFMutableAttributedStringRef)string);
     CGPathRef pathRef = CGPathCreateWithRect(CGRectMake(0,
                                                         0,
