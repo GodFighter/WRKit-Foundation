@@ -17,9 +17,13 @@
 @end
 
 @implementation WRMongolianLabel
-
+- (instancetype)init {
+    if (self = [super init]) {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
 - (void)setText:(NSString *)text {
-    self.backgroundColor = [UIColor clearColor];
     _text = text;
     if (CGSizeEqualToSize(self.container.displaySize, CGSizeZero)) {
         self.container.displaySize = CGSizeMake(self.frame.size.height, self.frame.size.width);
@@ -35,6 +39,10 @@
     self.container.displaySize = CGSizeMake(frame.size.height, frame.size.width);
     [self setNeedsDisplay];
 //    NSLog(@"%@--%@",[NSValue valueWithCGSize:self.container.displaySize], [NSValue valueWithCGRect:frame]);
+}
+- (void)layoutSubviews {
+    self.container.displaySize = CGSizeMake(self.frame.size.height, self.frame.size.width);
+    [self setNeedsDisplay];
 }
 - (void)setFont:(UIFont *)font {
     _font = font;

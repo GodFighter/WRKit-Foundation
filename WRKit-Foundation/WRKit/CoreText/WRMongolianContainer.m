@@ -57,7 +57,9 @@
                                                                                             NSFontAttributeName : self.font,
                                                                                             NSForegroundColorAttributeName : self.textColor
                                                                                             }];
-    [string addAttributes:@{NSForegroundColorAttributeName : self.highlightColor} range:self.highlightRange];
+    if (self.highlightColor != nil) {
+        [string addAttributes:@{NSForegroundColorAttributeName : self.highlightColor} range:self.highlightRange];
+    }
     NSMutableParagraphStyle *paragraphStyle =  [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = self.displayLineCount >= self.linesArray.count - 1 ? NSLineBreakByWordWrapping :  NSLineBreakByTruncatingTail;
     
@@ -78,7 +80,7 @@
     CGPathRef pathRef = CGPathCreateWithRect(CGRectMake(0,
                                                         0,
                                                         self.displaySize.width,
-                                                        self.displaySize.height),
+                                                        LONG_MAX),
                                              &CGAffineTransformIdentity);
     CTFrameRef frameRef = CTFramesetterCreateFrame(framesetterRef, CFRangeMake(0, 0), pathRef, NULL);
     
@@ -98,7 +100,7 @@
         currentWidth += self.font.lineHeight + self.lineSpacing;
         // 第一次超过绘制边界的行，为最后可以显示的一行
         if (firstGreater == NO && currentWidth > self.displaySize.height) {
-            _displayLineCount = i - 1;
+            _displayLineCount = i > 0 ? i - 1 : 0;
             firstGreater = YES;
         }
         line.range = NSMakeRange(CTLineGetStringRange(line.ctLine).location, CTLineGetStringRange(line.ctLine).length);
