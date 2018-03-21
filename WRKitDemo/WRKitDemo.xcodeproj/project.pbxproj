@@ -38,6 +38,8 @@
 		BBA1A6121F7CF10C00973672 /* WRCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA1A6111F7CF10C00973672 /* WRCollectionViewCell.m */; };
 		BBB3F1AB1F99D5BC00915D7E /* NSString+WRSize.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB3F1AA1F99D5BC00915D7E /* NSString+WRSize.m */; };
 		BBCC744F1FACA52200FDAFB0 /* WRObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCC744E1FACA52200FDAFB0 /* WRObject.m */; };
+		BBFDF74B20623ABF00FA83AD /* NSObject+WRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFDF74820623ABF00FA83AD /* NSObject+WRCell.m */; };
+		BBFDF74C20623ABF00FA83AD /* NSArray+WRSection.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFDF74A20623ABF00FA83AD /* NSArray+WRSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,10 @@
 		BBB3F1AA1F99D5BC00915D7E /* NSString+WRSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+WRSize.m"; sourceTree = "<group>"; };
 		BBCC744D1FACA52200FDAFB0 /* WRObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRObject.h; sourceTree = "<group>"; };
 		BBCC744E1FACA52200FDAFB0 /* WRObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRObject.m; sourceTree = "<group>"; };
+		BBFDF74720623ABF00FA83AD /* NSObject+WRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WRCell.h"; sourceTree = "<group>"; };
+		BBFDF74820623ABF00FA83AD /* NSObject+WRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WRCell.m"; sourceTree = "<group>"; };
+		BBFDF74920623ABF00FA83AD /* NSArray+WRSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+WRSection.h"; sourceTree = "<group>"; };
+		BBFDF74A20623ABF00FA83AD /* NSArray+WRSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+WRSection.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,10 @@
 		BB0EF4891F7A03BA00CE3846 /* WRFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				BBFDF74920623ABF00FA83AD /* NSArray+WRSection.h */,
+				BBFDF74A20623ABF00FA83AD /* NSArray+WRSection.m */,
+				BBFDF74720623ABF00FA83AD /* NSObject+WRCell.h */,
+				BBFDF74820623ABF00FA83AD /* NSObject+WRCell.m */,
 				BB0EF48A1F7A03BA00CE3846 /* NSDate+WRCalendar.h */,
 				BB0EF48B1F7A03BA00CE3846 /* NSDate+WRCalendar.m */,
 				BB0EF48C1F7A03BA00CE3846 /* NSObject+WRJudge.h */,
@@ -331,9 +341,11 @@
 				BB0EF49A1F7A03BB00CE3846 /* NSObject+WRJudge.m in Sources */,
 				BB161E681F7B8C4D005B73C7 /* WRCollectionView.m in Sources */,
 				BB0EF4961F7A03BB00CE3846 /* UILabel+WRSize.m in Sources */,
+				BBFDF74C20623ABF00FA83AD /* NSArray+WRSection.m in Sources */,
 				BB0EF4931F7A03BB00CE3846 /* UIControl+WRBlocks.m in Sources */,
 				BBB3F1AB1F99D5BC00915D7E /* NSString+WRSize.m in Sources */,
 				BB0EF49E1F7A03D200CE3846 /* UIView+WRMongolian.m in Sources */,
+				BBFDF74B20623ABF00FA83AD /* NSObject+WRCell.m in Sources */,
 				BB9BE9861F453D7D009FA8AC /* main.m in Sources */,
 				BB14933F1F948C2A00DDC429 /* WRLine.m in Sources */,
 				BB0EF4941F7A03BB00CE3846 /* UIImage+WRConvenience.m in Sources */,

@@ -14,5 +14,7 @@
 #import "NSString+WRJudge.h"
 #import "NSString+WRSize.h"
 #import "NSDate+WRCalendar.h"
+#import "NSArray+WRSection.h"
+#import "NSObject+WRCell.h"
 
 #endif /* WRFoundation_h */
